@@ -90,10 +90,10 @@ skills:
 social:
   - icon: envelope
     icon_pack: fas
-    link: '/#contact'
+    link: "mailto:prakrutkotecha@gmail.com"
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
+    link: https://x.com/kotecha_prakrut?s=20
     label: Follow me on Twitter
     display:
       header: true
@@ -102,10 +102,10 @@ social:
     link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/prakrutk
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/in/prakrut-kotecha-044093189/
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
@@ -117,5 +117,7 @@ social:
 highlight_name: true
 ---
 
-Robotics has been in limelight for quite some time. 
+I have been interested in the field of robotics since my undergraduate days. My robotics journey started as a member of [IvLabs](https://www.ivlabs.in/) under the guidance of [Prof. Shital Chiddarwar](https://mec.vnit.ac.in/people/sschiddarwar/)  I am currently working on Learning based dynamics and Optimal Control algorithms for legged robots. I am currently pursuing my Masters in Cyber Physical Systems at [Indian Institute of Science, Bangalore](https://iisc.ac.in/). My research advisor is [Prof.Shishir NY](https://www.shishirny.com/)
+
+Also like to take pictures of nature in general and also play chess in my free time.
 {style="text-align: justify;"}
