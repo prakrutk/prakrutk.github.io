@@ -62,27 +62,30 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - title: CEO
-          company: GenCoin
+        - title: Research Assistant
+          company: Robotics Research Center (RRC) at IIIT-Hyderabad
           company_url: ''
-          company_logo: org-gc
-          location: California
-          date_start: '2021-01-01'
-          date_end: ''
-          description: |2-
-              Responsibilities include:
-
-              * Analysing
-              * Modelling
-              * Deploying
-        - title: Professor of Semiconductor Physics
-          company: University X
+          company_logo: ''
+          location: Hyderabad, India
+          date_start: '2022-01-01'
+          date_end: '2023-04-30'
+          description: Worked under Pof. Nagamanikandan G on non-prehensile manipulation using optimal control 
+        - title: Summer Intern
+          company: Indian Institute of Space Science and Technology (IIST), Trivandrum
           company_url: ''
-          company_logo: org-x
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Taught electronic engineering and researched semiconductor physics.
+          company_logo: ''
+          location: Remote
+          date_start: '2021-05-01'
+          date_end: '2021-09-31'
+          description: Worked under Prof. Sam Zachariah on the topic of "Design, Control and Simulation of a Quadruped Robot"
+        - title: Summer Intern
+          company: IvLabs, VNIT Nagpur
+          company_url: ''
+          company_logo: ''
+          location: Nagpur, India
+          date_start: '2019-05-01'
+          date_end: '2019-08-31'
+          description: Worked under Prof. Shital Chiddarwar on developing a navigation device [PixGuide]()
     design:
       columns: '2'
   - block: accomplishments
