@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakrut Kotecha | IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. CSS VARIABLES (THEME ENGINE) --- */
+        :root {
+            /* DEFAULT: DARK THEME VARIABLES */
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #64b5f6; /* Lighter blue for contrast on dark */
+            --border: #333333;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --icon-color: #fff;
+        }
+
+        /* LIGHT THEME OVERRIDES */
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --accent: #007bff; /* Standard blue */
+            --border: #eeeeee;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --icon-color: #333;
+        }
+
+        /* --- 2. GLOBAL STYLES --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-weight: 300;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: background 0.3s;
+        }
+        
+        .nav-container {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links .active { color: var(--text-main); font-weight: 500; }
+
+        /* THEME TOGGLE BUTTON */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 25px;
+            padding: 5px;
+            color: var(--icon-color);
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .theme-toggle:hover { transform: scale(1.1); }
+
+        /* --- 4. LAYOUT --- */
+        .container {
+            max-width: 820px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .bio { flex: 1; }
+        .bio h1 { font-weight: 700; font-size: 2.2rem; margin: 0 0 10px 0; color: var(--text-main); }
+        .bio-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px; }
+        
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background-color: var(--card-bg);
+        }
+
+        /* --- 6. CONTENT STYLING --- */
+        h2 {
+            font-size: 1.6rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        a { color: var(--text-main); text-decoration: none; border-bottom: 1px dotted var(--text-secondary); transition: 0.2s;}
+        a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        .no-style-link { border: none; }
+
+        /* News Table */
+        .news-table { width: 100%; border-collapse: collapse; }
+        .news-table td { padding: 8px 0; vertical-align: top; border-bottom: 1px solid transparent; }
+        .news-date { width: 15%; font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+        .news-content { width: 85%; color: var(--text-main); }
+
+        /* Publications */
+        .pub-item { margin-bottom: 30px; display: flex; gap: 20px; }
+        .pub-details { flex: 1; }
+        .pub-title { font-weight: 500; font-size: 1.05rem; margin-bottom: 5px; color: var(--text-main); }
+        .pub-authors { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 5px; }
+        .pub-venue { font-style: italic; font-size: 0.95rem; margin-bottom: 10px; color: var(--text-secondary); }
+        
+        .pub-links a {
+            font-size: 0.8rem;
+            border: 1px solid var(--text-main);
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+        }
+        .pub-links a:hover {
+            background-color: var(--text-main);
+            color: var(--bg-color); /* Invert colors on hover */
+            text-decoration: none;
+        }
+        /* --- Project Images --- */
+        .project-thumb {
+            width: 200px;         /* Fixed width */
+            height: 120px;        /* Fixed height */
+            object-fit: cover;    /* Ensures image covers the box without stretching */
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            flex-shrink: 0;       /* Prevents the image from shrinking */
+            background-color: var(--card-bg);
+        }
+
+        /* --- Clickable Project Cards --- */
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            border: 1px solid transparent; /* Invisible border by default */
+            border-radius: 8px;
+            text-decoration: none; /* Removes underline from text */
+            color: inherit; /* Inherits text color */
+            transition: all 0.3s ease; /* Smooth animation */
+            background: transparent;
+        }
+
+        /* The "Pop Up" Effect */
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.01); /* Moves up and grows slightly */
+            background-color: var(--card-bg);
+            border-color: var(--border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Drop shadow */
+            cursor: pointer;
+        }
+
+        /* Ensure title changes color on hover to indicate clickability */
+        .project-card:hover .pub-title {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* On mobile, put the image on top */
+        @media (max-width: 700px) {
+            .pub-item {
+                flex-direction: column;
+            }
+            .project-thumb {
+                width: 100%;
+                height: 160px;
+                order: -1; /* Moves image to the top of the card on mobile */
+                margin-bottom: 10px;
+            }
+        }
+        /* Mobile */
+        @media (max-width: 700px) {
+            .hero { flex-direction: column-reverse; align-items: center; text-align: center; }
+            .profile-photo { width: 160px; height: 160px; margin-bottom: 20px; }
+            .nav-container { flex-direction: column; gap: 10px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .nav-links a { margin: 0 10px; }
+            .theme-toggle { margin-left: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-title no-style-link">Prakrut Kotecha</a>
+            <div class="nav-links">
+                <a href="#" class="active">About</a>
+                <a href="#news">News</a>
+                <a href="#publications">Publications</a>
+                <a href="#projects">Projects</a>
+                <a href="gallery.html">Gallery</a>
+                
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+                    &#9728; </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="hero">
+            <div class="bio">
+                <h1>Hi, I'm Prakrut</h1>
+                <div class="bio-subtitle">PhD Student @ IISc Bangalore</div>
+                <p>
+                    I am a doctoral researcher at the <strong>Robert Bosch Centre for Cyber-Physical Systems (RBCCPS)</strong>, Indian Institute of Science. 
+                    I am advised by <a href="https://cps.iisc.ac.in/people/shishir-ny/">Prof. Shishir NY</a>.
+                </p>
+                <p>
+                    My research lies at the intersection of <strong>Robotics, Control Theory, and Machine Learning</strong>. 
+                    Specifically, I am interested in:
+                </p>
+                <ul>
+                    <li>Quadruped Locomotion & Dynamics</li>
+                    <li>Physics-Guided World Models</li>
+                    <li>Optimal Control (MPC)</li>
+                </ul>
+                <p>
+                    Previously, I graduated from <strong>VNIT Nagpur</strong> and worked with IvLabs.
+                </p>
+                <div style="margin-top: 20px;">
+                    <a href="mailto:prakrutpk@iisc.ac.in" class="no-style-link" style="margin-right: 15px; font-size: 1.5rem;">&#9993;</a>
+                    <a href="#" class="no-style-link" style="margin-right: 15px; font-size: 1.5rem;">&#128187;</a>
+                    <a href="#" class="no-style-link" style="font-size: 1.5rem;">&#128196;</a>
+                </div>
+            </div>
+            
+            <img src="images/profile.jpg" alt="Prakrut Kotecha" class="profile-photo" onerror="this.src='https://via.placeholder.com/200/333/fff?text=Prakrut'">
+        </div>
+
+        <section id="news">
+            <h2>News</h2>
+            <table class="news-table">
+                <tr>
+                    <td class="news-date">Jan 2026</td>
+                    <td class="news-content">Applying for the <strong>TCS Research Fellowship</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="news-date">Late 2025</td>
+                    <td class="news-content">Presented a Late Breaking Result at <strong>Humanoids 2025</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="news-date">Oct 2025</td>
+                    <td class="news-content">Traveled to Seoul, South Korea for a conference.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds using MPC and RL</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, Co-author Name, Shishir NY</div>
+                    <div class="pub-venue">11th Indian Control Conference (ICC-11), 2025</div>
+                    <div class="pub-links">
+                        <a href="#">PDF</a>
+                        <a href="#">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Investigating Lagrangian Neural Networks for Infinite Horizon Planning</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">7th International Conference of The Robotics Society (AIR), 2025</div>
+                    <div class="pub-links">
+                        <a href="#">PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <a href="project-qhumus.html" class="project-card">
+                <div class="pub-details">
+                    <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
+                    <div class="pub-authors">Designed a novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes without rearrangement.</div>
+                    <div class="pub-links" style="margin-top: 10px;">
+                        <span style="font-size: 0.8rem; border: 1px solid var(--text-secondary); padding: 2px 6px; border-radius: 4px;">Read More &rarr;</span>
+                    </div>
+                </div>
+                <img src="images/qhumus.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Robot'">
+            </a>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
+                    <div class="pub-authors">Course Project: Robot Learning and Control. Implemented a hybrid control strategy for robust walking.</div>
+                    <div class="pub-links" style="margin-top: 5px;">
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+                <img src="images/biped.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Sim'">
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">MPC for UGVs in Unknown Environments</div>
+                    <div class="pub-authors">Course Project: Foundation of Robotics. Generated waypoints and navigation controls for obstacle avoidance.</div>
+                </div>
+                <img src="images/ugv.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=UGV'">
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Collision Cone Control Barrier Function</div>
+                    <div class="pub-authors">Course Project: Formal Control. Developed safety barriers for UAV obstacle avoidance.</div>
+                </div>
+                <img src="images/uav.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Drone'">
+            </div>
+            
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">PixGuide Navigation Device</div>
+                    <div class="pub-authors">A hardware navigation device for two-wheelers to avoid using mounted phones. Developed at IvLabs.</div>
+                </div>
+                <img src="images/pixguide.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Hardware'">
+            </div>
+        </section>
+        
+        <footer style="margin-top: 100px; margin-bottom: 40px; font-size: 0.8rem; color: var(--text-secondary); text-align: center;">
+            &copy; 2026 Prakrut Kotecha. Hosted on GitHub Pages.
+        </footer>
+
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Icons
+        const sunIcon = '&#9728;';
+        const moonIcon = '&#9790;';
+
+        // Check Local Storage on load
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            toggleButton.innerHTML = moonIcon; // If light, show moon (to switch to dark)
+        } else {
+            toggleButton.innerHTML = sunIcon; // If dark (default), show sun (to switch to light)
+        }
+
+        // Toggle Logic
+        toggleButton.addEventListener('click', () => {
+            const hasLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+            
+            if (hasLightTheme) {
+                // Switch to Dark
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                toggleButton.innerHTML = sunIcon;
+            } else {
+                // Switch to Light
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                toggleButton.innerHTML = moonIcon;
+            }
+        });
+    </script>
+
+</body>
+</html>

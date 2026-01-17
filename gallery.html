@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- COPY OF INDEX.HTML STYLES FOR CONSISTENCY --- */
+        :root {
+            /* DEFAULT: DARK THEME */
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #64b5f6; 
+            --border: #333333;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --icon-color: #fff;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --accent: #007bff;
+            --border: #eeeeee;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --icon-color: #333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-weight: 300;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-title { font-weight: 700; font-size: 1.1rem; color: var(--text-main); text-decoration: none; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-secondary); font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links .active { color: var(--text-main); font-weight: 500; }
+
+        /* Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 25px;
+            padding: 5px;
+            color: var(--icon-color);
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .theme-toggle:hover { transform: scale(1.1); }
+
+        /* --- GALLERY SPECIFIC STYLES --- */
+        .container {
+            max-width: 820px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h1 { margin-bottom: 40px; color: var(--text-main); font-weight: 700; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+            display: block; /* Removes bottom space */
+        }
+
+        .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .caption strong { display: block; margin-bottom: 4px; font-weight: 500; }
+        
+        .date-tag {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            .nav-container { flex-direction: column; gap: 10px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .nav-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-title">Prakrut Kotecha</a>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="index.html#news">News</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="#" class="active">Gallery</a>
+                
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+                    &#9728;
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Gallery</h1>
+
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="images/seoul_conf.jpg" alt="Seoul" onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=Photo'">
+                <div class="caption">
+                    <strong>Seoul, South Korea</strong>
+                    Conference presentation travel.
+                    <span class="date-tag">Oct 2025</span>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/humanoids.jpg" alt="Humanoids" onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=Photo'">
+                <div class="caption">
+                    <strong>IEEE-RAS Humanoids</strong>
+                    Late Breaking Result presentation.
+                    <span class="date-tag">2025</span>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/cyphyss.jpg" alt="CyPhySS" onerror="this.src='https://via.placeholder.com/400x300/333/fff?text=Photo'">
+                <div class="caption">
+                    <strong>CyPhySS Symposium</strong>
+                    Oral Presentation on Bipedal Walking.
+                    <span class="date-tag">2024</span>
+                </div>
+            </div>
+            
+            </div>
+
+        <footer style="margin-top: 100px; margin-bottom: 40px; font-size: 0.8rem; color: var(--text-secondary); text-align: center;">
+            &copy; 2026 Prakrut Kotecha. Hosted on GitHub Pages.
+        </footer>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const sunIcon = '&#9728;';
+        const moonIcon = '&#9790;';
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            toggleButton.innerHTML = moonIcon;
+        } else {
+            toggleButton.innerHTML = sunIcon;
+        }
+
+        toggleButton.addEventListener('click', () => {
+            const hasLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+            if (hasLightTheme) {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                toggleButton.innerHTML = sunIcon;
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                toggleButton.innerHTML = moonIcon;
+            }
+        });
+    </script>
+</body>
+</html>
