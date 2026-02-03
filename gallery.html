@@ -4,42 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         /* --- COPY OF INDEX.HTML STYLES FOR CONSISTENCY --- */
         :root {
-            /* DEFAULT: DARK THEME */
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #64b5f6; 
-            --border: #333333;
-            --nav-bg: rgba(18, 18, 18, 0.95);
-            --icon-color: #fff;
+            /* DEFAULT: DARK THEME VARIABLES */
+            --bg-color: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f8f9fa;
+            --text-secondary: #b8bcc8;
+            --accent: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 15, 0.9);
+            --icon-color: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
+        /* LIGHT THEME OVERRIDES */
         [data-theme="light"] {
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-secondary: #666666;
-            --accent: #007bff;
-            --border: #eeeeee;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-            --icon-color: #333;
+            --bg-color: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-glass: rgba(0, 0, 0, 0.03);
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --accent: #0066ff;
+            --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 249, 250, 0.9);
+            --icon-color: #212529;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            font-weight: 300;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Particle Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
         }
 
         /* Nav */
@@ -47,100 +102,273 @@
             position: sticky;
             top: 0;
             background: var(--nav-bg);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 15px 0;
+            box-shadow: var(--shadow);
         }
         .nav-container {
-            max-width: 820px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 40px;
         }
-        .nav-title { font-weight: 700; font-size: 1.1rem; color: var(--text-main); text-decoration: none; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-secondary); font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links .active { color: var(--text-main); font-weight: 500; }
+        .nav-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            margin-left: 12px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover { 
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+        
+        .nav-links .active { 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         /* Button */
         .theme-toggle {
-            background: none;
-            border: none;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
             cursor: pointer;
-            margin-left: 25px;
-            padding: 5px;
+            margin-left: 20px;
+            padding: 8px;
             color: var(--icon-color);
             font-size: 1.2rem;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .theme-toggle:hover { transform: scale(1.1); }
+
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         /* --- GALLERY SPECIFIC STYLES --- */
         .container {
-            max-width: 820px;
+            max-width: 1400px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
-        h1 { margin-bottom: 40px; color: var(--text-main); font-weight: 700; }
+        h1 { 
+            margin-bottom: 50px; 
+            color: var(--text-main); 
+            font-weight: 800;
+            font-size: 3rem;
+            text-align: center;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .gallery-item {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow), var(--glow);
             border-color: var(--accent);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.05;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             border-bottom: 1px solid var(--border);
-            display: block; /* Removes bottom space */
+            display: block;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
         .caption {
-            padding: 15px;
-            font-size: 0.9rem;
+            padding: 20px;
+            font-size: 1rem;
             color: var(--text-main);
+            position: relative;
+            z-index: 2;
         }
 
-        .caption strong { display: block; margin-bottom: 4px; font-weight: 500; }
+        .caption strong { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .gallery-item:hover .caption strong {
+            color: var(--accent-secondary);
+        }
         
         .date-tag {
-            display: block;
-            font-size: 0.75rem;
+            display: inline-block;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-top: 8px;
-            font-family: monospace;
-            text-transform: uppercase;
+            margin-top: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--card-glass);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .date-tag {
+            background: var(--accent-gradient);
+            color: var(--text-main);
+            transform: translateY(-2px);
         }
 
         /* Mobile */
         @media (max-width: 700px) {
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-            .nav-links a { margin: 0 10px; }
+            .nav-container { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px;
+            }
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            .nav-links a { 
+                margin: 4px 8px; 
+                font-size: 0.9rem;
+                padding: 4px 8px;
+            }
+            .theme-toggle { 
+                margin-left: 0; 
+                margin-top: 10px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
+    <canvas id="particle-canvas"></canvas>
 
     <nav>
         <div class="nav-container">
@@ -199,6 +427,7 @@
     </div>
 
     <script>
+        // Theme Toggle
         const toggleButton = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         const sunIcon = '&#9728;';
@@ -223,6 +452,122 @@
                 localStorage.setItem('theme', 'light');
                 toggleButton.innerHTML = moonIcon;
             }
+        });
+
+        // Particle Animation System
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= dx * force * 0.02;
+                    this.y -= dy * force * 0.02;
+                }
+
+                // Wrap around edges
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+                ctx.fillStyle = isLightTheme 
+                    ? `rgba(0, 102, 255, ${this.opacity})` 
+                    : `rgba(0, 212, 255, ${this.opacity})`;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+                        ctx.strokeStyle = isLightTheme
+                            ? `rgba(0, 102, 255, ${0.1 * (1 - distance / 120)})`
+                            : `rgba(0, 212, 255, ${0.1 * (1 - distance / 120)})`;
+                        
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Mouse tracking
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Initialize
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
         });
     </script>
 </body>

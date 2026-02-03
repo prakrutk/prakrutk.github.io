@@ -4,44 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prakrut Kotecha | IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         /* --- 1. CSS VARIABLES (THEME ENGINE) --- */
         :root {
             /* DEFAULT: DARK THEME VARIABLES */
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #64b5f6; /* Lighter blue for contrast on dark */
-            --border: #333333;
-            --nav-bg: rgba(18, 18, 18, 0.95);
-            --icon-color: #fff;
+            --bg-color: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f8f9fa;
+            --text-secondary: #b8bcc8;
+            --accent: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 15, 0.9);
+            --icon-color: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         /* LIGHT THEME OVERRIDES */
         [data-theme="light"] {
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-secondary: #666666;
-            --accent: #007bff; /* Standard blue */
-            --border: #eeeeee;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-            --icon-color: #333;
+            --bg-color: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-glass: rgba(0, 0, 0, 0.03);
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --accent: #0066ff;
+            --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 249, 250, 0.9);
+            --icon-color: #212529;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(0, 102, 255, 0.2);
         }
 
         /* --- 2. GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            font-weight: 300;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            font-weight: 400;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* --- 3. NAVIGATION --- */
@@ -49,64 +91,116 @@
             position: sticky;
             top: 0;
             background: var(--nav-bg);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 15px 0;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         .nav-container {
-            max-width: 820px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .nav-title {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-main);
             text-decoration: none;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
+            gap: 8px;
         }
 
         .nav-links a {
-            margin-left: 20px;
+            margin-left: 12px;
             text-decoration: none;
             color: var(--text-secondary);
             font-size: 0.95rem;
-            font-weight: 400;
-            transition: color 0.2s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
         
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links .active { color: var(--text-main); font-weight: 500; }
+        .nav-links a:hover { 
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+        
+        .nav-links .active { 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         /* THEME TOGGLE BUTTON */
         .theme-toggle {
-            background: none;
-            border: none;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
             cursor: pointer;
-            margin-left: 25px;
-            padding: 5px;
+            margin-left: 20px;
+            padding: 8px;
             color: var(--icon-color);
             font-size: 1.2rem;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .theme-toggle:hover { transform: scale(1.1); }
+
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         /* --- 4. LAYOUT --- */
         .container {
-            max-width: 820px;
+            max-width: 1200px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         /* --- 5. HERO SECTION --- */
@@ -116,102 +210,371 @@
             align-items: flex-start;
             gap: 40px;
             margin-bottom: 60px;
+            position: relative;
         }
 
-        .bio { flex: 1; }
-        .bio h1 { font-weight: 700; font-size: 2.2rem; margin: 0 0 10px 0; color: var(--text-main); }
-        .bio-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px; }
+        .bio { 
+            flex: 1; 
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .bio h1 { 
+            font-weight: 800; 
+            font-size: 3rem; 
+            margin: 0 0 10px 0; 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .bio-subtitle { 
+            font-size: 1.3rem; 
+            color: var(--text-secondary); 
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .bio p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .bio ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .bio li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .bio li:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
         
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
             background-color: var(--card-bg);
+            border: 3px solid var(--border);
+            animation: slideInRight 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* --- 6. CONTENT STYLING --- */
         h2 {
-            font-size: 1.6rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            font-weight: 500;
+            font-size: 2rem;
+            border: none;
+            padding: 0;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            font-weight: 700;
             color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
         }
 
-        a { color: var(--text-main); text-decoration: none; border-bottom: 1px dotted var(--text-secondary); transition: 0.2s;}
-        a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-        .no-style-link { border: none; }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::after {
+            width: 100px;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover { 
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .no-style-link { 
+            border: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .no-style-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
 
         /* News Table */
-        .news-table { width: 100%; border-collapse: collapse; }
-        .news-table td { padding: 8px 0; vertical-align: top; border-bottom: 1px solid transparent; }
-        .news-date { width: 15%; font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
-        .news-content { width: 85%; color: var(--text-main); }
+        .news-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .news-table tr {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .news-table tr:hover {
+            background: var(--card-glass);
+            transform: translateX(10px);
+        }
+
+        .news-table td { 
+            padding: 16px 20px; 
+            vertical-align: top;
+        }
+
+        .news-date { 
+            width: 25%; 
+            font-size: 0.9rem; 
+            color: var(--text-secondary); 
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .news-content { 
+            width: 75%; 
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
         /* Publications */
-        .pub-item { margin-bottom: 30px; display: flex; gap: 20px; }
+        .pub-item { 
+            margin-bottom: 30px; 
+            display: flex; 
+            gap: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pub-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .pub-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pub-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
         .pub-details { flex: 1; }
-        .pub-title { font-weight: 500; font-size: 1.05rem; margin-bottom: 5px; color: var(--text-main); }
-        .pub-authors { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 5px; }
-        .pub-venue { font-style: italic; font-size: 0.95rem; margin-bottom: 10px; color: var(--text-secondary); }
+        .pub-title { 
+            font-weight: 600; 
+            font-size: 1.2rem; 
+            margin-bottom: 8px; 
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .pub-item:hover .pub-title {
+            color: var(--accent);
+        }
+
+        .pub-authors { 
+            font-size: 1rem; 
+            color: var(--text-secondary); 
+            margin-bottom: 8px; 
+            line-height: 1.4;
+        }
+
+        .pub-venue { 
+            font-style: italic; 
+            font-size: 0.95rem; 
+            margin-bottom: 15px; 
+            color: var(--accent-secondary);
+            font-weight: 500;
+        }
         
         .pub-links a {
             font-size: 0.8rem;
-            border: 1px solid var(--text-main);
-            padding: 2px 8px;
-            border-radius: 3px;
-            margin-right: 5px;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-main);
+            transition: all 0.3s ease;
+            display: inline-block;
         }
+
         .pub-links a:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color); /* Invert colors on hover */
+            background: var(--accent-gradient);
+            color: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
             text-decoration: none;
+            border-color: transparent;
         }
         /* --- Project Images --- */
         .project-thumb {
-            width: 200px;         /* Fixed width */
-            height: 120px;        /* Fixed height */
-            object-fit: cover;    /* Ensures image covers the box without stretching */
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            flex-shrink: 0;       /* Prevents the image from shrinking */
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
             background-color: var(--card-bg);
+            transition: all 0.3s ease;
         }
 
         /* --- Clickable Project Cards --- */
         .project-card {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            padding: 20px;
-            border: 1px solid transparent; /* Invisible border by default */
-            border-radius: 8px;
-            text-decoration: none; /* Removes underline from text */
-            color: inherit; /* Inherits text color */
-            transition: all 0.3s ease; /* Smooth animation */
-            background: transparent;
+            gap: 25px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* The "Pop Up" Effect */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .project-card:hover {
-            transform: translateY(-5px) scale(1.01); /* Moves up and grows slightly */
-            background-color: var(--card-bg);
-            border-color: var(--border);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Drop shadow */
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow), var(--glow);
             cursor: pointer;
+            border-color: var(--accent);
         }
 
-        /* Ensure title changes color on hover to indicate clickability */
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .project-card:hover .project-thumb {
+            transform: scale(1.05) rotate(1deg);
+            border-color: var(--accent);
+        }
+
         .project-card:hover .pub-title {
             color: var(--accent);
             text-decoration: underline;
+            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
         }
 
         /* On mobile, put the image on top */
@@ -226,18 +589,223 @@
                 margin-bottom: 10px;
             }
         }
-        /* Mobile */
-        @media (max-width: 700px) {
-            .hero { flex-direction: column-reverse; align-items: center; text-align: center; }
-            .profile-photo { width: 160px; height: 160px; margin-bottom: 20px; }
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-            .nav-links a { margin: 0 10px; }
-            .theme-toggle { margin-left: 10px; }
+        /* Mobile and Tablet Responsiveness */
+        @media (max-width: 768px) {
+            .hero { 
+                flex-direction: column-reverse; 
+                align-items: center; 
+                text-align: center; 
+                gap: 30px;
+                padding: 0 10px;
+            }
+            
+            .bio h1 { 
+                font-size: 2rem; 
+                line-height: 1.2;
+            }
+            
+            .bio-subtitle { 
+                font-size: 1rem; 
+            }
+            
+            .bio p {
+                font-size: 0.95rem;
+            }
+
+            .bio ul {
+                font-size: 0.9rem;
+                padding-left: 15px;
+            }
+            
+            .profile-photo { 
+                width: 160px; 
+                height: 160px; 
+                margin-bottom: 10px; 
+            }
+            
+            .nav-container { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px;
+            }
+            
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            
+            .nav-links a { 
+                margin: 4px 6px; 
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+            
+            .theme-toggle { 
+                margin-left: 0; 
+                margin-top: 10px;
+            }
+
+            .container {
+                padding: 0 20px;
+                margin: 40px auto;
+            }
+
+            .pub-item {
+                flex-direction: column;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .project-card {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .project-thumb {
+                width: 100%;
+                height: 160px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            .bio {
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .profile-photo {
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .social-icon {
+                padding: 6px;
+            }
+
+            .social-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Improve news table on mobile */
+            .news-table {
+                border-radius: 10px;
+            }
+
+            .news-table td {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .news-date {
+                font-size: 0.8rem;
+            }
+
+            .news-content {
+                font-size: 0.9rem;
+            }
+
+            /* Pub links mobile */
+            .pub-links a {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .bio h1 {
+                font-size: 1.8rem;
+            }
+
+            .bio-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+                margin: 3px 5px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .profile-photo {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* Enhanced typography and readability */
+        strong, b {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        em, i {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Social media links styling */
+        .bio > div:last-child {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        @media (min-width: 701px) {
+            .bio > div:last-child {
+                justify-content: flex-start;
+            }
+        }
+
+        .social-icon {
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 50%;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Particle Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
+    <canvas id="particle-canvas"></canvas>
 
     <nav>
         <div class="nav-container">
@@ -259,28 +827,48 @@
         
         <div class="hero">
             <div class="bio">
-                <h1>Hi, I'm Prakrut</h1>
-                <div class="bio-subtitle">PhD Student @ IISc Bangalore</div>
+                <h1>Prakrut Kotecha</h1>
+                <div class="bio-subtitle">Ph.D. Student @ IISc Bangalore</div>
                 <p>
-                    I am a doctoral researcher at the <strong>Robert Bosch Centre for Cyber-Physical Systems (RBCCPS)</strong>, Indian Institute of Science. 
-                    I am advised by <a href="https://cps.iisc.ac.in/people/shishir-ny/">Prof. Shishir NY</a>.
+                    From my undergraduate days, the world of robotics has captivated me. It all began as a member of <strong>IvLabs</strong>, where I delved into this exciting field under mentorship of Prof. Shital Chiddarwar. My focus is on developing <strong>Learning-based Dynamics and Optimal Control algorithms for legged robots</strong>—an endeavor that continuously ignites my passion for innovation.
                 </p>
                 <p>
-                    My research lies at the intersection of <strong>Robotics, Control Theory, and Machine Learning</strong>. 
-                    Specifically, I am interested in:
+                    Amid this journey, I'm pursuing my Ph.D. in <strong>Cyber-Physical Systems</strong> at the renowned Indian Institute of Science, Bangalore. Here, under expert guidance of <a href="https://cps.iisc.ac.in/people/shishir-ny/">Prof. Shishir NY</a>, I'm exploring the endless possibilities this field offers.
+                </p>
+                <p>
+                    My research interests include:
                 </p>
                 <ul>
-                    <li>Quadruped Locomotion & Dynamics</li>
-                    <li>Physics-Guided World Models</li>
-                    <li>Optimal Control (MPC)</li>
+                    <li>Quadrupedal Locomotion & Dynamics</li>
+                    <li>Learning-based Control Systems</li>
+                    <li>Model Predictive Control (MPC)</li>
+                    <li>Reinforcement Learning for Robotics</li>
+                    <li>Reconfigurable Robotic Systems</li>
                 </ul>
                 <p>
-                    Previously, I graduated from <strong>VNIT Nagpur</strong> and worked with IvLabs.
+                    Previously, I graduated from <strong>VNIT Nagpur</strong> and have worked on various exciting robotics projects.
                 </p>
-                <div style="margin-top: 20px;">
-                    <a href="mailto:prakrutpk@iisc.ac.in" class="no-style-link" style="margin-right: 15px; font-size: 1.5rem;">&#9993;</a>
-                    <a href="#" class="no-style-link" style="margin-right: 15px; font-size: 1.5rem;">&#128187;</a>
-                    <a href="#" class="no-style-link" style="font-size: 1.5rem;">&#128196;</a>
+                <div style="margin-top: 30px;">
+                    <a href="mailto:prakrutpk@iisc.ac.in" class="no-style-link social-icon" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/prakrutpk" class="no-style-link social-icon" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/prakrutkotecha" class="no-style-link social-icon" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" class="no-style-link social-icon" title="Google Scholar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5c.7.3 1.5.5 2.4.5 1.1 0 2.1-.3 3-.8L12 5.5l6.6 2.7c.9.5 1.9.8 3 .8.9 0 1.7-.2 2.4-.5L12 0zM5.8 16.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm12.4 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             
@@ -288,45 +876,82 @@
         </div>
 
         <section id="news">
-            <h2>News</h2>
+            <h2>News & Events</h2>
             <table class="news-table">
                 <tr>
-                    <td class="news-date">Jan 2026</td>
-                    <td class="news-content">Applying for the <strong>TCS Research Fellowship</strong>.</td>
+                    <td class="news-date">2025</td>
+                    <td class="news-content">Presented a Late Breaking result at the <strong>2025 IEEE-RAS 24th International Conference on Humanoid Robots</strong> <a href="#">[link]</a></td>
                 </tr>
                 <tr>
-                    <td class="news-date">Late 2025</td>
-                    <td class="news-content">Presented a Late Breaking Result at <strong>Humanoids 2025</strong>.</td>
+                    <td class="news-date">2025</td>
+                    <td class="news-content">Gave a tutorial at <strong>Walmart Centre for Tech Excellence's Reinforcement Learning Workshop 2025</strong> <a href="#">[link]</a></td>
                 </tr>
                 <tr>
-                    <td class="news-date">Oct 2025</td>
-                    <td class="news-content">Traveled to Seoul, South Korea for a conference.</td>
+                    <td class="news-date">2025</td>
+                    <td class="news-content">Participated in <strong>Bangalore Neuromorphic Engineering Workshop 2025</strong> <a href="#">[link]</a></td>
+                </tr>
+                <tr>
+                    <td class="news-date">2025</td>
+                    <td class="news-content">Teaching Assistantship for <strong>Foundation of Robotics</strong> Course</td>
                 </tr>
             </table>
         </section>
 
         <section id="publications">
-            <h2>Selected Publications</h2>
+            <h2>Publications & Patents</h2>
             
             <div class="pub-item">
                 <div class="pub-details">
-                    <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds using MPC and RL</div>
-                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, Co-author Name, Shishir NY</div>
-                    <div class="pub-venue">11th Indian Control Conference (ICC-11), 2025</div>
+                    <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds using Model Predictive Control and Reinforcement Learning</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">2025 Eleventh Indian Control Conference (ICC-11)</div>
                     <div class="pub-links">
-                        <a href="#">PDF</a>
-                        <a href="#">Code</a>
+                        <a href="#">Paper</a>
+                        <a href="#">Website</a>
                     </div>
                 </div>
             </div>
 
             <div class="pub-item">
                 <div class="pub-details">
-                    <div class="pub-title">Investigating Lagrangian Neural Networks for Infinite Horizon Planning</div>
+                    <div class="pub-title">Investigating Lagrangian Neural Networks for Infinite Horizon Planning in Quadrupedal Locomotion</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
-                    <div class="pub-venue">7th International Conference of The Robotics Society (AIR), 2025</div>
+                    <div class="pub-venue">7th International Conference of The Robotics Society, Advances In Robotics 2025</div>
                     <div class="pub-links">
-                        <a href="#">PDF</a>
+                        <a href="#">Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">A Hierarchical Manipulation Planning Framework Combining Striking, Pushing, and Pick & Place Motion Primitives</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">Conference on Automation Science and Engineering (CASE) 2024 (Presented)</div>
+                    <div class="pub-links">
+                        <a href="#">Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Combining RL and MPC for bipedal walking</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">Cyber-Physical Systems Symposium (CyPhySS) 2024 (Oral Presentation)</div>
+                    <div class="pub-links">
+                        <a href="#">Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Navigation System for a vehicle and a method for navigation</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">CBR Ref. Number: 201921049473 (2018) (Published Patent)</div>
+                    <div class="pub-links">
+                        <a href="#">Patent</a>
                     </div>
                 </div>
             </div>
@@ -359,26 +984,59 @@
 
             <div class="pub-item">
                 <div class="pub-details">
+                    <div class="pub-title">Non-Prehensile Manipulation</div>
+                    <div class="pub-authors">Research Project under Prof. Nagamanikandan G., International Institute of Information Technology, Hyderabad. Striking an object to a desired pose using Trajectory Optimization, Pushing multiple objects to respective desired positions, and Designing a two-finger gripper using linear actuators.</div>
+                </div>
+                <img src="images/manipulation.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Manipulation'">
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Control and Design of Quadruped Robot</div>
+                    <div class="pub-authors">Research Project under Prof. Sam Zachariah, Indian Institute of Space Science and Technology. Worked on Hybrid Dynamics based controller to produce dynamic walking gait for Quadruped and produced animation from Matlab program of quadruped dropping from certain height.</div>
+                </div>
+                <img src="images/quadruped-control.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Quadruped'">
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Gait and Trajectory Optimization for Bipeds</div>
+                    <div class="pub-authors">Research Project. Implemented trajectory optimization on a 5-link kneed walker, generated periodic and non-periodic gaits for flat and uneven surfaces, and developed understanding of Non-Linear dynamics and chaos theory to construct a two-link passive walker.</div>
+                </div>
+                <img src="images/biped-optimization.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Biped'">
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
                     <div class="pub-title">MPC for UGVs in Unknown Environments</div>
                     <div class="pub-authors">Course Project: Foundation of Robotics. Generated waypoints and navigation controls for obstacle avoidance.</div>
+                    <div class="pub-links" style="margin-top: 10px;">
+                        <a href="#">GitHub</a>
+                    </div>
                 </div>
-                <img src="images/ugv.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=UGV'">
+                <img src="images/ugv.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=UGV'">
             </div>
 
             <div class="pub-item">
                 <div class="pub-details">
                     <div class="pub-title">Collision Cone Control Barrier Function</div>
                     <div class="pub-authors">Course Project: Formal Control. Developed safety barriers for UAV obstacle avoidance.</div>
+                    <div class="pub-links" style="margin-top: 10px;">
+                        <a href="#">GitHub</a>
+                    </div>
                 </div>
-                <img src="images/uav.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Drone'">
+                <img src="images/uav.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Drone'">
             </div>
             
             <div class="pub-item">
                 <div class="pub-details">
                     <div class="pub-title">PixGuide Navigation Device</div>
-                    <div class="pub-authors">A hardware navigation device for two-wheelers to avoid using mounted phones. Developed at IvLabs.</div>
+                    <div class="pub-authors">Hardware navigation device for two-wheelers to avoid using mounted phones. Developed at IvLabs under Prof. Shital Chiddarwar. The main motive is to help two-wheelers navigate without having to use different applications or mounting their mobile phones or other expensive machines on vehicle.</div>
+                    <div class="pub-links" style="margin-top: 10px;">
+                        <a href="#">Project</a>
+                    </div>
                 </div>
-                <img src="images/pixguide.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Hardware'">
+                <img src="images/pixguide.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Hardware'">
             </div>
         </section>
         
@@ -389,37 +1047,168 @@
     </div>
 
     <script>
+        // Theme Toggle
         const toggleButton = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         
-        // Icons
         const sunIcon = '&#9728;';
         const moonIcon = '&#9790;';
 
-        // Check Local Storage on load
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'light') {
             htmlElement.setAttribute('data-theme', 'light');
-            toggleButton.innerHTML = moonIcon; // If light, show moon (to switch to dark)
+            toggleButton.innerHTML = moonIcon;
         } else {
-            toggleButton.innerHTML = sunIcon; // If dark (default), show sun (to switch to light)
+            toggleButton.innerHTML = sunIcon;
         }
 
-        // Toggle Logic
         toggleButton.addEventListener('click', () => {
             const hasLightTheme = htmlElement.getAttribute('data-theme') === 'light';
             
             if (hasLightTheme) {
-                // Switch to Dark
                 htmlElement.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'dark');
                 toggleButton.innerHTML = sunIcon;
             } else {
-                // Switch to Light
                 htmlElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 toggleButton.innerHTML = moonIcon;
             }
+        });
+
+        // Particle Animation System
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= dx * force * 0.02;
+                    this.y -= dy * force * 0.02;
+                }
+
+                // Wrap around edges
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+                ctx.fillStyle = isLightTheme 
+                    ? `rgba(0, 102, 255, ${this.opacity})` 
+                    : `rgba(0, 212, 255, ${this.opacity})`;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+                        ctx.strokeStyle = isLightTheme
+                            ? `rgba(0, 102, 255, ${0.1 * (1 - distance / 120)})`
+                            : `rgba(0, 212, 255, ${0.1 * (1 - distance / 120)})`;
+                        
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Mouse tracking
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Initialize
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        // Smooth scroll reveal for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
         });
     </script>
 
