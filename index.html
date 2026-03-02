@@ -52,7 +52,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-gradient);
-            background-attachment: fixed;
+            background-attachment: scroll;
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -259,7 +259,7 @@
             transform: translateX(5px);
         }
         
-        .profile-photo {
+            .profile-photo {
             width: 250px;
             height: 250px;
             object-fit: cover;
@@ -269,7 +269,7 @@
             border: 3px solid var(--border);
             animation: slideInRight 0.8s ease-out;
             transition: all 0.3s ease;
-        }
+            }
 
         .profile-photo:hover {
             transform: scale(1.05) rotate(2deg);
@@ -1005,7 +1005,7 @@
                 </div>
             </div>
             
-            <img src="images/profile.jpg" alt="Prakrut Kotecha" class="profile-photo" onerror="this.src='https://via.placeholder.com/200/333/fff?text=Prakrut'">
+            <img src="images/profile.jpg" alt="Prakrut Kotecha" class="profile-photo" loading="lazy" onerror="this.src='https://via.placeholder.com/200/333/fff?text=Prakrut'">
         </div>
 
         <!-- <section id="news">
@@ -1180,7 +1180,7 @@
             <h2>Talks & Presentations</h2>
             <div class="talks-grid">
                 <div class="talk-card">
-                    <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
+                    <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
                     <div class="talk-card-content">
                         <div class="talk-card-title">Late Breaking Result</div>
                         <div class="talk-card-venue">IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025</div>
@@ -1188,7 +1188,7 @@
                 </div>
 
                 <div class="talk-card">
-                    <img src="images/rl-workshop.jpg" alt="RL Workshop" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
+                    <img src="images/rl-workshop.jpg" alt="RL Workshop" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
                     <div class="talk-card-content">
                         <div class="talk-card-title">RL Tutorial</div>
                         <div class="talk-card-venue">Walmart Centre for Tech Excellence RL Workshop, 2025</div>
@@ -1196,7 +1196,7 @@
                 </div>
 
                 <div class="talk-card">
-                    <img src="images/cyphyss.jpg" alt="CyPhySS Symposium" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
+                    <img src="images/cyphyss.jpg" alt="CyPhySS Symposium" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
                     <div class="talk-card-content">
                         <div class="talk-card-title">Oral Presentation</div>
                         <div class="talk-card-venue">Cyber-Physical Systems Symposium (CyPhySS), 2024</div>
@@ -1317,13 +1317,17 @@
 
         function initParticles() {
             particles = [];
-            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 20 : 80;
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
 
         function connectParticles() {
+            const isMobile = window.innerWidth < 768;
+            if (isMobile) return; 
+            
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
