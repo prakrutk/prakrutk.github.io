@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadruped Gait Adaptation | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>Real-Time Gait Adaptation for Quadrupeds</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed (2025)</span>
+                <span class="meta-item"><strong>Publication:</strong> ICC-11</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, Isaac Gym, PyTorch</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">Paper</a>
+            </div>
+        </div>
+
+        <img src="images/quadruped-control.jpg" alt="Quadruped Gait" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Quadruped+Gait'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This research presents an adaptive gait generation framework for quadrupedal robots using 
+                <strong>Model Predictive Control (MPC)</strong> integrated with <strong>Reinforcement Learning</strong>. 
+                The system enables real-time gait adaptation in unknown environments with dynamic obstacles.
+            </p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <p>
+                The approach combines the benefits of both learning-based and optimization-based methods:
+            </p>
+            <ul>
+                <li><strong>MPC:</strong> Provides optimal foot placement and force distribution over a prediction horizon.</li>
+                <li><strong>RL Fine-tuning:</strong> Adapts the MPC parameters based on terrain characteristics.</li>
+                <li><strong>Terrain Estimation:</strong> Online terrain classification using proprioceptive sensing.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                The system demonstrates successful locomotion on various terrains including flat ground, slopes, 
+                and stairs with up to 85% success rate in cluttered environments.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

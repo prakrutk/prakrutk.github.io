@@ -423,12 +423,12 @@
 
         /* Publications */
         .pub-item { 
-            margin-bottom: 30px; 
+            margin-bottom: 15px; 
             display: flex; 
-            gap: 20px;
+            gap: 15px;
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 15px 20px;
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -461,8 +461,8 @@
         .pub-details { flex: 1; }
         .pub-title { 
             font-weight: 600; 
-            font-size: 1.2rem; 
-            margin-bottom: 8px; 
+            font-size: 1rem; 
+            margin-bottom: 4px; 
             color: var(--text-main);
             transition: color 0.3s ease;
         }
@@ -472,27 +472,27 @@
         }
 
         .pub-authors { 
-            font-size: 1rem; 
+            font-size: 0.9rem; 
             color: var(--text-secondary); 
-            margin-bottom: 8px; 
-            line-height: 1.4;
+            margin-bottom: 4px; 
+            line-height: 1.3;
         }
 
         .pub-venue { 
             font-style: italic; 
-            font-size: 0.95rem; 
-            margin-bottom: 15px; 
+            font-size: 0.85rem; 
+            margin-bottom: 10px; 
             color: var(--accent-secondary);
             font-weight: 500;
         }
         
         .pub-links a {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             background: var(--card-glass);
             border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-right: 8px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            margin-right: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-main);
@@ -575,6 +575,114 @@
             color: var(--accent);
             text-decoration: underline;
             text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .projects-grid .project-card {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Experience Section */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .experience-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .exp-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .exp-org {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .exp-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Talks & Events Section */
+        .talks-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+
+        .talk-card {
+            flex: 0 0 250px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .talk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .talk-card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            background: var(--card-glass);
+        }
+
+        .talk-card-content {
+            padding: 15px;
+        }
+
+        .talk-card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .talk-card-venue {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
         }
 
         /* On mobile, put the image on top */
@@ -812,13 +920,16 @@
             <a href="#" class="nav-title no-style-link">Prakrut Kotecha</a>
             <div class="nav-links">
                 <a href="#" class="active">About</a>
-                <a href="#news">News</a>
+                <!-- <a href="#news">News</a> -->
                 <a href="#publications">Publications</a>
-                <a href="#projects">Projects</a>
-                <a href="gallery.html">Gallery</a>
+                <!-- <a href="#projects">Projects</a> -->
+                <!-- <a href="#experience">Experience</a>
+                <a href="#talks">Talks</a> -->
+                <a href="projects.html">All Projects</a>
+                <a href="cv.html">CV</a>
+                <!-- <a href="gallery.html">Gallery</a> -->
                 
-                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
-                    &#9728; </button>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
             </div>
         </div>
     </nav>
@@ -830,6 +941,28 @@
                 <h1>Prakrut Kotecha</h1>
                 <div class="bio-subtitle">Ph.D. Student @ IISc Bangalore</div>
                 <p>
+                    I am a Ph.D. researcher in <strong>Cyber-Physical Systems</strong> at the Indian Institute of Science (IISc), Bangalore, working under the guidance of <a href="https://cps.iisc.ac.in/people/shishir-ny/">Prof. Shishir NY</a>. My research focuses on developing <strong>learning-based dynamics models and optimal control algorithms for robots</strong>, with the goal of enabling robust and adaptive robotic locomotion.
+                </p>
+
+                <p>
+                    My interest in robotics began during my undergraduate studies at <strong>VNIT Nagpur</strong>, where I was an active member of <strong>IvLabs</strong> under the mentorship of Prof. Shital Chiddarwar. Since then, I have been deeply engaged in advancing intelligent and physically grounded control strategies for complex robotic systems.
+                </p>
+
+                <p>
+                    My research interests include:
+                </p>
+                <ul>
+                    <li>Quadrupedal Locomotion & Dynamics</li>
+                    <li>Learning-based Control Systems</li>
+                    <li>Model Predictive Control (MPC)</li>
+                    <li>Reinforcement Learning for Robotics</li>
+                    <li>Reconfigurable Robotic Systems</li>
+                </ul>
+
+                <p>
+                    I am always open to research collaborations and discussions related to robotics, learning-based control, and dynamic systems.
+                </p>
+                <!-- <p>
                     From my undergraduate days, the world of robotics has captivated me. It all began as a member of <strong>IvLabs</strong>, where I delved into this exciting field under mentorship of Prof. Shital Chiddarwar. My focus is on developing <strong>Learning-based Dynamics and Optimal Control algorithms for legged robots</strong>—an endeavor that continuously ignites my passion for innovation.
                 </p>
                 <p>
@@ -846,8 +979,8 @@
                     <li>Reconfigurable Robotic Systems</li>
                 </ul>
                 <p>
-                    Previously, I graduated from <strong>VNIT Nagpur</strong> and have worked on various exciting robotics projects.
-                </p>
+                    Previously, I graduated from <strong>VNIT Nagpur</strong> and have worked on various exciting robotics projects. -->
+                <!-- </p> -->
                 <div style="margin-top: 30px;">
                     <a href="mailto:prakrutpk@iisc.ac.in" class="no-style-link social-icon" title="Email">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -875,7 +1008,7 @@
             <img src="images/profile.jpg" alt="Prakrut Kotecha" class="profile-photo" onerror="this.src='https://via.placeholder.com/200/333/fff?text=Prakrut'">
         </div>
 
-        <section id="news">
+        <!-- <section id="news">
             <h2>News & Events</h2>
             <table class="news-table">
                 <tr>
@@ -895,10 +1028,26 @@
                     <td class="news-content">Teaching Assistantship for <strong>Foundation of Robotics</strong> Course</td>
                 </tr>
             </table>
-        </section>
+        </section> -->
 
         <section id="publications">
             <h2>Publications & Patents</h2>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">Neural Predictive Control using Lagrangian Neural Networks for Quadruped Locomotion</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">2026 IEEE 22nd Conference on Automation Science and Engineering (CASE) (Under Review)</div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-details">
+                    <div class="pub-title">STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (Under Review)</div>
+                </div>
+            </div>
             
             <div class="pub-item">
                 <div class="pub-details">
@@ -906,8 +1055,8 @@
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
                     <div class="pub-venue">2025 Eleventh Indian Control Conference (ICC-11)</div>
                     <div class="pub-links">
-                        <a href="#">Paper</a>
-                        <a href="#">Website</a>
+                        <a href="https://arxiv.org/abs/2510.20706">Paper</a>
+                        <a href="https://sites.google.com/iisc.ac.in/autogait/home?authuser=0">Website</a>
                     </div>
                 </div>
             </div>
@@ -918,7 +1067,7 @@
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
                     <div class="pub-venue">7th International Conference of The Robotics Society, Advances In Robotics 2025</div>
                     <div class="pub-links">
-                        <a href="#">Paper</a>
+                        <a href="https://www.arxiv.org/abs/2506.16079">Paper</a>
                     </div>
                 </div>
             </div>
@@ -927,20 +1076,10 @@
                 <div class="pub-details">
                     <div class="pub-title">A Hierarchical Manipulation Planning Framework Combining Striking, Pushing, and Pick & Place Motion Primitives</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
-                    <div class="pub-venue">Conference on Automation Science and Engineering (CASE) 2024 (Presented)</div>
+                    <div class="pub-venue">Conference on Automation Science and Engineering (CASE) 2024</div>
                     <div class="pub-links">
-                        <a href="#">Paper</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Combining RL and MPC for bipedal walking</div>
-                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
-                    <div class="pub-venue">Cyber-Physical Systems Symposium (CyPhySS) 2024 (Oral Presentation)</div>
-                    <div class="pub-links">
-                        <a href="#">Paper</a>
+                        <a href="https://ieeexplore.ieee.org/document/10711645">Paper</a>
+                        <a href="https://youtu.be/ePORvzIond8">Video</a>
                     </div>
                 </div>
             </div>
@@ -951,7 +1090,7 @@
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
                     <div class="pub-venue">CBR Ref. Number: 201921049473 (2018) (Published Patent)</div>
                     <div class="pub-links">
-                        <a href="#">Patent</a>
+                        <a href="https://youtu.be/ePORvzIond8">Video</a>
                     </div>
                 </div>
             </div>
@@ -959,84 +1098,110 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            
-            <a href="project-qhumus.html" class="project-card">
-                <div class="pub-details">
-                    <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
-                    <div class="pub-authors">Designed a novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes without rearrangement.</div>
-                    <div class="pub-links" style="margin-top: 10px;">
-                        <span style="font-size: 0.8rem; border: 1px solid var(--text-secondary); padding: 2px 6px; border-radius: 4px;">Read More &rarr;</span>
+            <div class="projects-grid">
+                <a href="project-qhumus.html" class="project-card">
+                    <div class="pub-details">
+                        <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
+                        <div class="pub-authors">Novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes.</div>
+                    </div>
+                </a>
+
+                <a href="project-bipedal-rl-mpc.html" class="project-card">
+                    <div class="pub-details">
+                        <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
+                        <div class="pub-authors">Hybrid control strategy combining Reinforcement Learning with Model Predictive Control.</div>
+                    </div>
+                </a>
+
+                <a href="project-quadruped-gait.html" class="project-card">
+                    <div class="pub-details">
+                        <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds</div>
+                        <div class="pub-authors">Adaptive gait generation using MPC integrated with RL for dynamic locomotion.</div>
+                    </div>
+                </a>
+
+                <a href="project-lagrangian-nn.html" class="project-card">
+                    <div class="pub-details">
+                        <div class="pub-title">Lagrangian Neural Networks for Quadrupedal Locomotion</div>
+                        <div class="pub-authors">Physics-informed neural networks for infinite horizon planning.</div>
+                    </div>
+                </a>
+
+                <a href="projects.html" class="project-card" style="justify-content: center; text-align: center;">
+                    <div class="pub-details">
+                        <div class="pub-title" style="color: var(--accent);">View All Projects &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Research Intern</div>
+                        <div class="exp-date">Feb 2026 - Present</div>
+                    </div>
+                    <div class="exp-org">Advanced Humanoid Research Lab, Infosys Limited</div>
+                    <div class="exp-desc">Humanoid robotics research and development</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Research Intern</div>
+                        <div class="exp-date">Jan 2022 - March 2023</div>
+                    </div>
+                    <div class="exp-org">Robotics Research Centre (RRC),International Institute of Information Technology, Hyderabad</div>
+                    <div class="exp-desc">Developed a framework for Hybrid Manipulation using a Mobile manipulator under <a href="https://www.iiitdm.ac.in/people/faculty/nagamanikandan.g@iiitdm.ac.in">Prof. Nagamanikandan Govindan</a>.</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Summer Intern</div>
+                        <div class="exp-date">May 2021 - Sept 2021</div>
+                    </div>
+                    <div class="exp-org">Indian Institute of Space Science and Technology</div>
+                    <div class="exp-desc">Worked on a Hybrid dynamics-based controller to produce dynamic walking gait for Quadruped under <a href="https://www.iist.ac.in/people-faculty-profile/sam-k-zachariah">Prof. Sam Zachariah</a></div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Researcher</div>
+                        <div class="exp-date">2019 - 2022</div>
+                    </div>
+                    <div class="exp-org">IvLabs Robotics Club, VNIT Nagpur</div>
+                    <div class="exp-desc">Did various robotics projects and served as Alumni Secretary at IvLabs Robotics Club under <a href="https://scholar.google.com/citations?user=B9InqKQAAAAJ&hl=en">Prof. Shital Chiddarwar</a></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="talks">
+            <h2>Talks & Presentations</h2>
+            <div class="talks-grid">
+                <div class="talk-card">
+                    <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
+                    <div class="talk-card-content">
+                        <div class="talk-card-title">Late Breaking Result</div>
+                        <div class="talk-card-venue">IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025</div>
                     </div>
                 </div>
-                <img src="images/qhumus.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Robot'">
-            </a>
 
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
-                    <div class="pub-authors">Course Project: Robot Learning and Control. Implemented a hybrid control strategy for robust walking.</div>
-                    <div class="pub-links" style="margin-top: 5px;">
-                        <a href="#">GitHub</a>
+                <div class="talk-card">
+                    <img src="images/rl-workshop.jpg" alt="RL Workshop" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
+                    <div class="talk-card-content">
+                        <div class="talk-card-title">RL Tutorial</div>
+                        <div class="talk-card-venue">Walmart Centre for Tech Excellence RL Workshop, 2025</div>
                     </div>
                 </div>
-                <img src="images/biped.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/200x120/333/fff?text=Sim'">
-            </div>
 
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Non-Prehensile Manipulation</div>
-                    <div class="pub-authors">Research Project under Prof. Nagamanikandan G., International Institute of Information Technology, Hyderabad. Striking an object to a desired pose using Trajectory Optimization, Pushing multiple objects to respective desired positions, and Designing a two-finger gripper using linear actuators.</div>
-                </div>
-                <img src="images/manipulation.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Manipulation'">
-            </div>
-
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Control and Design of Quadruped Robot</div>
-                    <div class="pub-authors">Research Project under Prof. Sam Zachariah, Indian Institute of Space Science and Technology. Worked on Hybrid Dynamics based controller to produce dynamic walking gait for Quadruped and produced animation from Matlab program of quadruped dropping from certain height.</div>
-                </div>
-                <img src="images/quadruped-control.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Quadruped'">
-            </div>
-
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Gait and Trajectory Optimization for Bipeds</div>
-                    <div class="pub-authors">Research Project. Implemented trajectory optimization on a 5-link kneed walker, generated periodic and non-periodic gaits for flat and uneven surfaces, and developed understanding of Non-Linear dynamics and chaos theory to construct a two-link passive walker.</div>
-                </div>
-                <img src="images/biped-optimization.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Biped'">
-            </div>
-
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">MPC for UGVs in Unknown Environments</div>
-                    <div class="pub-authors">Course Project: Foundation of Robotics. Generated waypoints and navigation controls for obstacle avoidance.</div>
-                    <div class="pub-links" style="margin-top: 10px;">
-                        <a href="#">GitHub</a>
+                <div class="talk-card">
+                    <img src="images/cyphyss.jpg" alt="CyPhySS Symposium" class="talk-card-img" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
+                    <div class="talk-card-content">
+                        <div class="talk-card-title">Oral Presentation</div>
+                        <div class="talk-card-venue">Cyber-Physical Systems Symposium (CyPhySS), 2024</div>
                     </div>
                 </div>
-                <img src="images/ugv.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=UGV'">
-            </div>
-
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">Collision Cone Control Barrier Function</div>
-                    <div class="pub-authors">Course Project: Formal Control. Developed safety barriers for UAV obstacle avoidance.</div>
-                    <div class="pub-links" style="margin-top: 10px;">
-                        <a href="#">GitHub</a>
-                    </div>
-                </div>
-                <img src="images/uav.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Drone'">
-            </div>
-            
-            <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">PixGuide Navigation Device</div>
-                    <div class="pub-authors">Hardware navigation device for two-wheelers to avoid using mounted phones. Developed at IvLabs under Prof. Shital Chiddarwar. The main motive is to help two-wheelers navigate without having to use different applications or mounting their mobile phones or other expensive machines on vehicle.</div>
-                    <div class="pub-links" style="margin-top: 10px;">
-                        <a href="#">Project</a>
-                    </div>
-                </div>
-                <img src="images/pixguide.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/220x140/333/fff?text=Hardware'">
             </div>
         </section>
         
@@ -1051,29 +1216,41 @@
         const toggleButton = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         
-        const sunIcon = '&#9728;';
-        const moonIcon = '&#9790;';
+        const themes = ['dark', 'light'];
+        const icons = {
+            'dark': '&#9728;',
+            'light': '&#9790;'
+        };
+        
+        const labels = {
+            'dark': 'Switch to Light Theme',
+            'light': 'Switch to Dark Theme'
+        };
 
-        const currentTheme = localStorage.getItem('theme');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') {
             htmlElement.setAttribute('data-theme', 'light');
-            toggleButton.innerHTML = moonIcon;
-        } else {
-            toggleButton.innerHTML = sunIcon;
         }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
 
         toggleButton.addEventListener('click', () => {
-            const hasLightTheme = htmlElement.getAttribute('data-theme') === 'light';
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const currentIndex = themes.indexOf(current);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            const nextTheme = themes[nextIndex];
             
-            if (hasLightTheme) {
+            if (nextTheme === 'dark') {
                 htmlElement.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'dark');
-                toggleButton.innerHTML = sunIcon;
             } else {
                 htmlElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
-                toggleButton.innerHTML = moonIcon;
             }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+            updateParticleColors();
         });
 
         // Particle Animation System
@@ -1122,10 +1299,15 @@
             }
 
             draw() {
-                const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
-                ctx.fillStyle = isLightTheme 
-                    ? `rgba(0, 102, 255, ${this.opacity})` 
-                    : `rgba(0, 212, 255, ${this.opacity})`;
+                const theme = htmlElement.getAttribute('data-theme');
+                let color;
+                if (theme === 'light') {
+                    color = `rgba(0, 102, 255, ${this.opacity})`;
+                } else {
+                    color = `rgba(0, 212, 255, ${this.opacity})`;
+                }
+                
+                ctx.fillStyle = color;
                 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -1149,10 +1331,16 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < 120) {
-                        const isLightTheme = htmlElement.getAttribute('data-theme') === 'light';
-                        ctx.strokeStyle = isLightTheme
-                            ? `rgba(0, 102, 255, ${0.1 * (1 - distance / 120)})`
-                            : `rgba(0, 212, 255, ${0.1 * (1 - distance / 120)})`;
+                        const opacity = 0.1 * (1 - distance / 120);
+                        const theme = htmlElement.getAttribute('data-theme');
+                        let strokeColor;
+                        if (theme === 'light') {
+                            strokeColor = `rgba(0, 102, 255, ${opacity})`;
+                        } else {
+                            strokeColor = `rgba(0, 212, 255, ${opacity})`;
+                        }
+                        
+                        ctx.strokeStyle = strokeColor;
                         
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();

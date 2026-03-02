@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f8f9fa;
+            --text-secondary: #b8bcc8;
+            --accent: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 15, 0.9);
+            --icon-color: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-glass: rgba(0, 0, 0, 0.03);
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --accent: #0066ff;
+            --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 249, 250, 0.9);
+            --icon-color: #212529;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            margin-left: 12px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a:hover { 
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+        
+        .nav-links .active { 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 8px;
+            color: var(--icon-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .page-header {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header h1 { 
+            font-weight: 800; 
+            font-size: 3rem; 
+            margin: 0 0 10px 0; 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .project-card {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow), var(--glow);
+            cursor: pointer;
+            border-color: var(--accent);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .project-card:hover .project-thumb {
+            transform: scale(1.05) rotate(1deg);
+            border-color: var(--accent);
+        }
+
+        .project-card:hover .pub-title {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .project-thumb {
+            width: 280px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            background-color: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .pub-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pub-title { 
+            font-weight: 600; 
+            font-size: 1.3rem; 
+            margin-bottom: 12px; 
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .pub-authors { 
+            font-size: 1rem; 
+            color: var(--text-secondary); 
+            margin-bottom: 15px; 
+            line-height: 1.5;
+        }
+
+        .pub-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .pub-tag {
+            font-size: 0.75rem;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 15px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card.has-link {
+            cursor: pointer;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px;
+            }
+            
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            
+            .nav-links a { 
+                margin: 4px 6px; 
+                font-size: 0.85rem;
+            }
+            
+            .theme-toggle { 
+                margin-left: 0; 
+                margin-top: 10px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-card {
+                flex-direction: column;
+            }
+
+            .project-thumb {
+                width: 100%;
+                height: 180px;
+            }
+        }
+
+        footer {
+            margin-top: 100px;
+            margin-bottom: 40px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-title no-style-link">Prakrut Kotecha</a>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <!-- <a href="index.html#news">News</a> -->
+                <a href="index.html#publications">Publications</a>
+                <a href="projects.html" class="active">All Projects</a>
+                <a href="cv.html">CV</a>
+                <!-- <a href="gallery.html">Gallery</a> -->
+                
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Projects</h1>
+            <p>A collection of my research and academic projects in robotics and control systems</p>
+        </div>
+
+        <div class="projects-grid">
+            <a href="project-qhumus.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
+                    <div class="pub-authors">Designed a novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes without rearrangement.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Reconfigurable Robotics</span>
+                        <span class="pub-tag">Morphology</span>
+                        <span class="pub-tag">Multi-modal Locomotion</span>
+                    </div>
+                </div>
+                <img src="images/qhumus.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=QHuMuS'">
+            </a>
+
+            <a href="project-bipedal-rl-mpc.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
+                    <div class="pub-authors">Implemented a hybrid control strategy combining Reinforcement Learning with Model Predictive Control.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Bipedal Robots</span>
+                        <span class="pub-tag">RL</span>
+                        <span class="pub-tag">MPC</span>
+                    </div>
+                </div>
+                <img src="images/biped.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Bipedal+Walking'">
+            </a>
+
+            <a href="project-quadruped-gait.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds</div>
+                    <div class="pub-authors">Adaptive gait generation using MPC integrated with RL for dynamic quadrupedal locomotion.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Quadrupedal Locomotion</span>
+                        <span class="pub-tag">MPC</span>
+                        <span class="pub-tag">Gait Optimization</span>
+                    </div>
+                </div>
+                <img src="images/quadruped-control.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Quadruped+Gait'">
+            </a>
+
+            <a href="project-lagrangian-nn.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Lagrangian Neural Networks for Quadrupedal Locomotion</div>
+                    <div class="pub-authors">Physics-informed neural networks for infinite horizon planning in quadrupedal locomotion.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Deep Learning</span>
+                        <span class="pub-tag">Physics-Informed ML</span>
+                        <span class="pub-tag">Dynamics</span>
+                    </div>
+                </div>
+                <img src="images/quadruped-control.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Lagrangian+NN'">
+            </a>
+
+            <a href="project-non-prehensile.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Non-Prehensile Manipulation</div>
+                    <div class="pub-authors">Striking objects to desired poses using Trajectory Optimization and gripper design.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Manipulation</span>
+                        <span class="pub-tag">Trajectory Optimization</span>
+                        <span class="pub-tag">Gripper Design</span>
+                    </div>
+                </div>
+                <img src="images/manipulation.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Non-Prehensile'">
+            </a>
+
+            <a href="project-hierarchical-manipulation.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Hierarchical Manipulation Planning</div>
+                    <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Manipulation Planning</span>
+                        <span class="pub-tag">Motion Primitives</span>
+                    </div>
+                </div>
+                <img src="images/manipulation.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Hierarchical+Planning'">
+            </a>
+
+            <a href="project-quadruped-control.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Control and Design of Quadruped Robot</div>
+                    <div class="pub-authors">Hybrid Dynamics-based controller for dynamic walking gait generation.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Quadruped</span>
+                        <span class="pub-tag">Hybrid Dynamics</span>
+                        <span class="pub-tag">Control Design</span>
+                    </div>
+                </div>
+                <img src="images/quadruped-control.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Quadruped+Control'">
+            </a>
+
+            <a href="project-biped-optimization.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Gait and Trajectory Optimization for Bipeds</div>
+                    <div class="pub-authors">Trajectory optimization on 5-link kneed walker with non-linear dynamics and chaos theory.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Bipedal</span>
+                        <span class="pub-tag">Trajectory Optimization</span>
+                        <span class="pub-tag">Chaos Theory</span>
+                    </div>
+                </div>
+                <img src="images/biped-optimization.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=Biped+Optimization'">
+            </a>
+
+            <a href="project-mpc-ugv.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">MPC for UGVs in Unknown Environments</div>
+                    <div class="pub-authors">Waypoint generation and navigation controls for obstacle avoidance using MPC.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">UGV</span>
+                        <span class="pub-tag">MPC</span>
+                        <span class="pub-tag">Navigation</span>
+                    </div>
+                </div>
+                <img src="images/ugv.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=UGV+MPC'">
+            </a>
+
+            <a href="project-collision-cbf.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">Collision Cone Control Barrier Function</div>
+                    <div class="pub-authors">Safety barriers for UAV obstacle avoidance using Control Barrier Functions.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">UAV</span>
+                        <span class="pub-tag">Control Barrier Functions</span>
+                        <span class="pub-tag">Safety</span>
+                    </div>
+                </div>
+                <img src="images/uav.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=UAV+Safety'">
+            </a>
+
+            <a href="project-pixguide.html" class="project-card has-link">
+                <div class="pub-details">
+                    <div class="pub-title">PixGuide Navigation Device</div>
+                    <div class="pub-authors">Hardware navigation device for two-wheelers developed at IvLabs.</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Hardware</span>
+                        <span class="pub-tag">Navigation</span>
+                        <span class="pub-tag">Embedded Systems</span>
+                    </div>
+                </div>
+                <img src="images/pixguide.jpg" class="project-thumb" onerror="this.src='https://via.placeholder.com/280x180/1a3a1a/00ff41?text=PixGuide'">
+            </a>
+        </div>
+
+        <footer>
+            &copy; 2026 Prakrut Kotecha. Hosted on GitHub Pages.
+        </footer>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        const themes = ['dark', 'light'];
+        const icons = {
+            'dark': '&#9728;',
+            'light': '&#9790;'
+        };
+        
+        const labels = {
+            'dark': 'Switch to Light Theme',
+            'light': 'Switch to Dark Theme'
+        };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const currentIndex = themes.indexOf(current);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            const nextTheme = themes[nextIndex];
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+            updateParticleColors();
+        });
+
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function getParticleColor() {
+            const theme = htmlElement.getAttribute('data-theme');
+            if (theme === 'light') return 'rgba(0, 102, 255, ';
+            return 'rgba(0, 212, 255, ';
+        }
+
+        function updateParticleColors() {
+            particles.forEach(p => {
+                p.baseColor = getParticleColor();
+            });
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.baseColor = getParticleColor();
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= dx * force * 0.02;
+                    this.y -= dy * force * 0.02;
+                }
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `${this.baseColor}${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        const opacity = 0.1 * (1 - distance / 120);
+                        const theme = htmlElement.getAttribute('data-theme');
+                        if (theme === 'light') {
+                            ctx.strokeStyle = `rgba(0, 102, 255, ${opacity})`;
+                        } else {
+                            ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+                        }
+                        
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+    </script>
+</body>
+</html>

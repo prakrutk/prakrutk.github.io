@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collision Cone CBF | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>Collision Cone Control Barrier Function</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed</span>
+                <span class="meta-item"><strong>Course:</strong> Formal Control</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, CVXPY</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">GitHub</a>
+            </div>
+        </div>
+
+        <img src="images/uav.jpg" alt="UAV Safety" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=UAV+Safety'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                Course project developing safety barriers for <strong>UAV obstacle avoidance</strong> using 
+                <strong>Control Barrier Functions (CBF)</strong> combined with the collision cone approach. 
+                Provides formal safety guarantees for collision-free flight.
+            </p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <ul>
+                <li><strong>Collision Cone:</strong> Geometric approach to determine collision-prone configurations</li>
+                <li><strong>CBF formulation:</strong> Encode safety as forward invariant set</li>
+                <li><strong>Quadratic Program:</strong> Real-time CBF-QP controller</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                Demonstrated guaranteed safety in simulation with multiple static and moving obstacles. 
+                The CBF controller ensures the UAV maintains safe distance while tracking reference trajectories.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

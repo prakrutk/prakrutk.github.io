@@ -4,105 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QHuMuS Project | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- REUSING MAIN THEME CSS --- */
-        :root {
-            --bg-color: #121212;
-            --text-main: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #64b5f6; 
-            --border: #333333;
-            --nav-bg: rgba(18, 18, 18, 0.95);
-        }
-        [data-theme="light"] {
-            --bg-color: #ffffff;
-            --text-main: #333333;
-            --text-secondary: #666666;
-            --accent: #007bff;
-            --border: #eeeeee;
-            --nav-bg: rgba(255, 255, 255, 0.95);
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0; padding: 0; line-height: 1.6; font-weight: 300;
-        }
-        nav {
-            position: sticky; top: 0; background: var(--nav-bg);
-            backdrop-filter: blur(5px); border-bottom: 1px solid var(--border);
-            z-index: 1000; padding: 15px 0;
-        }
-        .nav-container {
-            max-width: 820px; margin: 0 auto; display: flex;
-            justify-content: space-between; padding: 0 20px;
-        }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-secondary); }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* --- PROJECT SPECIFIC STYLES --- */
-        .container { max-width: 820px; margin: 40px auto; padding: 0 20px; }
-        
-        .project-header { margin-bottom: 40px; }
-        .project-header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--text-main); }
-        .project-meta { color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; }
-
-        .big-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-        }
-
-        h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 40px; color: var(--text-main); }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-right: 10px;
-        }
-        .btn:hover { opacity: 0.9; }
-
-        /* Code block style if you need it */
-        pre {
-            background: #2d2d2d;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            color: #ccc;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
-            <a href="index.html" style="font-weight: bold; color: var(--text-main); text-decoration: none;">&larr; Back to Home</a>
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
         </div>
     </nav>
 
     <div class="container">
-        
         <div class="project-header">
             <h1>QHuMuS - Reconfigurable Robots</h1>
             <div class="project-meta">
-                <strong>Status:</strong> Completed (2025) &bull; 
-                <strong>Tools:</strong> ROS, Python, Gazebo &bull; 
-                <strong>Lab:</strong> IvLabs
+                <span class="meta-item"><strong>Status:</strong> Completed (2025)</span>
+                <span class="meta-item"><strong>Tools:</strong> ROS, Python, Gazebo</span>
+                <span class="meta-item"><strong>Lab:</strong> IvLabs</span>
             </div>
-            <a href="#" class="btn">View on GitHub</a>
-            <a href="#" class="btn" style="background-color: #444;">Read Paper</a>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">GitHub</a>
+                <a href="#" class="btn btn-primary">Paper</a>
+            </div>
         </div>
 
-        <img src="images/qhumus.jpg" alt="QHuMuS Robot" class="big-image" onerror="this.src='https://via.placeholder.com/800x400/333/fff?text=Project+Hero+Image'">
+        <img src="images/qhumus.jpg" alt="QHuMuS Robot" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=QHuMuS'">
 
         <section>
             <h2>Abstract</h2>
@@ -117,11 +43,12 @@
         <section>
             <h2>System Design</h2>
             <p>
-                The robot consists of 12 Degrees of Freedom (DoF). The transformation logic was derived using...
+                The robot consists of <strong>12 Degrees of Freedom (DoF)</strong>. The transformation logic was derived using:
             </p>
             <ul>
-                <li><strong>Mode A:</strong> High stability on flat ground.</li>
-                <li><strong>Mode B:</strong> Ability to traverse gaps.</li>
+                <li><strong>Mode A (Serpentine):</strong> High stability on flat ground</li>
+                <li><strong>Mode B (Wheeled-Quadruped):</strong> Ability to traverse gaps</li>
+                <li><strong>Mode C (Humanoid):</strong> Manipulation and climbing</li>
             </ul>
         </section>
 
@@ -129,11 +56,9 @@
             <h2>Results & Experiments</h2>
             <p>
                 We tested the robot in Gazebo simulation and hardware. The transition time between modes was optimized to 
-                <strong>2.4 seconds</strong>.
+                <strong>2.4 seconds</strong>. The robot demonstrated successful locomotion in all three modes.
             </p>
-            <iframe width="100%" height="450" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
         </section>
-
     </div>
 
 </body>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagrangian Neural Networks | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>Lagrangian Neural Networks for Quadrupedal Locomotion</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed (2025)</span>
+                <span class="meta-item"><strong>Publication:</strong> Advances In Robotics 2025</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, PyTorch, MuJoCo</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">Paper</a>
+            </div>
+        </div>
+
+        <img src="images/quadruped-control.jpg" alt="Lagrangian Neural Networks" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Lagrangian+NN'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This work investigates <strong>Lagrangian Neural Networks (LNNs)</strong> for infinite horizon planning 
+                in quadrupedal locomotion. Unlike standard neural networks, LNNs learn the Lagrangian of the system 
+                preserving physical constraints and energy conservation properties.
+            </p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <ul>
+                <li>Architecture: Lagrangian Neural Network with automatic differentiation</li>
+                <li>Training: Supervised learning on trajectory data from full-order physics simulation</li>
+                <li>Integration: Symplectic Euler integration for stable long-horizon predictions</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Key Findings</h2>
+            <p>
+                LNNs demonstrate better generalization to unseen terrains compared to black-box neural networks, 
+                with 40% lower prediction error over 10-second horizons.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

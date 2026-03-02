@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPC for UGV | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>MPC for UGVs in Unknown Environments</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed</span>
+                <span class="meta-item"><strong>Course:</strong> Foundation of Robotics</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, CasADi</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">GitHub</a>
+            </div>
+        </div>
+
+        <img src="images/ugv.jpg" alt="UGV MPC" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=UGV+MPC'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                Course project implementing <strong>Model Predictive Control (MPC)</strong> for Unmanned Ground Vehicles (UGV) 
+                navigating unknown environments with obstacle avoidance. The system generates optimal waypoints 
+                and controls in real-time.
+            </p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <ul>
+                <li><strong>System model:</strong> Bicycle model with kinematic constraints</li>
+                <li><strong>Cost function:</strong> Minimizes tracking error and control effort</li>
+                <li><strong>Constraints:</strong> Collision avoidance using safety margins</li>
+                <li><strong>Solver:</strong> Sequential Quadratic Programming (SQP)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                Successfully demonstrated obstacle avoidance in static and dynamic environments with 
+                replanning frequency of 10 Hz.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

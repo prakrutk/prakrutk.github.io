@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipedal RL+MPC Project | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>Combining RL and MPC for Bipedal Walking</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed</span>
+                <span class="meta-item"><strong>Course:</strong> Robot Learning and Control</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, MuJoCo, PyTorch</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">GitHub</a>
+            </div>
+        </div>
+
+        <img src="images/biped.jpg" alt="Bipedal Walking" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Bipedal+Walking'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This project implements a hybrid control strategy combining <strong>Reinforcement Learning (RL)</strong> with 
+                <strong>Model Predictive Control (MPC)</strong> for robust and adaptive bipedal walking on uneven terrain. 
+                The RL component learns a policy for nominal walking, while MPC provides real-time corrections for disturbances.
+            </p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <p>
+                The hybrid architecture consists of two main components:
+            </p>
+            <ul>
+                <li><strong>RL Policy:</strong> A deep neural network trained using Proximal Policy Optimization (PPO) to learn nominal walking gaits.</li>
+                <li><strong>MPC Controller:</strong> Real-time optimization that adjusts the foot placement and joint torques based on current state feedback.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                The hybrid controller showed significant improvement over standalone RL or MPC approaches, demonstrating:
+            </p>
+            <ul>
+                <li>50% reduction in fall rate on uneven terrain</li>
+                <li>Adaptive response to external perturbations</li>
+                <li>Smooth transition between different walking speeds</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

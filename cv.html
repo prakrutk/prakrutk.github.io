@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f8f9fa;
+            --text-secondary: #b8bcc8;
+            --accent: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 15, 0.9);
+            --icon-color: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-glass: rgba(0, 0, 0, 0.03);
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --accent: #0066ff;
+            --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 249, 250, 0.9);
+            --icon-color: #212529;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            margin-left: 12px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover { 
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+        
+        .nav-links .active { 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 8px;
+            color: var(--icon-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .pdf-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 85vh;
+            border: none;
+        }
+
+        .download-hint {
+            text-align: center;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            background: var(--card-glass);
+        }
+
+        .download-hint a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .download-hint a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px;
+            }
+            
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            
+            .nav-links a { 
+                margin: 4px 6px; 
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+            
+            .theme-toggle { 
+                margin-left: 0; 
+                margin-top: 10px;
+            }
+
+            .container {
+                padding: 0 20px;
+                margin: 30px auto;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .pdf-frame {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-title">Prakrut Kotecha</a>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="projects.html">Projects</a>
+                <a href="cv.html" class="active">CV</a>
+                
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Curriculum Vitae</h1>
+            <p>Ph.D. Student @ IISc Bangalore | Robotics & Control Systems</p>
+        </div>
+
+        <div class="pdf-container">
+            <!-- Replace 'cv.pdf' with your actual PDF file path -->
+            <iframe 
+                src="cv.pdf" 
+                class="pdf-frame" 
+                title="CV - Prakrut Kotecha"
+            ></iframe>
+            <div class="download-hint">
+                Can't view the PDF? <a href="cv.pdf" target="_blank">Open in new tab</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        const themes = ['dark', 'light'];
+        const icons = {
+            'dark': '&#9728;',
+            'light': '&#9790;'
+        };
+        
+        const labels = {
+            'dark': 'Switch to Light Theme',
+            'light': 'Switch to Dark Theme'
+        };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const currentIndex = themes.indexOf(current);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            const nextTheme = themes[nextIndex];
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+        });
+    </script>
+</body>
+</html>

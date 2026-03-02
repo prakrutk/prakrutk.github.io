@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hierarchical Manipulation Planning | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>Hierarchical Manipulation Planning</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed (2024)</span>
+                <span class="meta-item"><strong>Publication:</strong> CASE 2024</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, MoveIt, OMPL</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">Paper</a>
+            </div>
+        </div>
+
+        <img src="images/manipulation.jpg" alt="Hierarchical Manipulation" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Hierarchical+Planning'">
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This project presents a <strong>hierarchical manipulation planning framework</strong> that combines 
+                striking, pushing, and pick-and-place motion primitives for efficient manipulation in cluttered 
+                environments. The framework selects the most appropriate primitive based on scene context.
+            </p>
+        </section>
+
+        <section>
+            <h2>Framework</h2>
+            <ul>
+                <li><strong>High-level:</strong> Task planner selects optimal primitive sequence</li>
+                <li><strong>Mid-level:</strong> Motion planner generates collision-free trajectories</li>
+                <li><strong>Low-level:</strong> Execution with real-time replanning</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                The hierarchical approach reduces planning time by 60% compared to end-to-end methods while 
+                achieving 95% success rate in benchmark manipulation tasks.
+            </p>
+        </section>
+    </div>
+</body>
+</html>
