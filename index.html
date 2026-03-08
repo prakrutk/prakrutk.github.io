@@ -374,6 +374,76 @@
         }
 
         /* News Table */
+        .news-scroller {
+            overflow: hidden;
+            height: 200px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .news-scroller.paused {
+            cursor: default;
+        }
+
+        .news-scroller .news-track {
+            display: flex;
+            flex-direction: column;
+            animation: scrollNews 20s linear infinite;
+        }
+
+        .news-scroller.paused .news-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollNews {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .news-item:hover {
+            background: var(--card-glass);
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .news-content {
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .news-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
         .news-table { 
             width: 100%; 
             border-collapse: collapse; 
@@ -421,7 +491,7 @@
             line-height: 1.6;
         }
 
-        /* Publications */
+        /* --- Publications */
         .pub-item { 
             margin-bottom: 15px; 
             display: flex; 
@@ -434,6 +504,22 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+
+        .pub-thumb {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            background-color: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .pub-item:hover .pub-thumb {
+            border-color: var(--accent);
+            transform: scale(1.02);
         }
 
         .pub-item::before {
@@ -578,9 +664,36 @@
         }
 
         .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .projects-grid .project-card {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .projects-grid .pub-details {
+            padding: 20px;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid var(--border);
+            flex-shrink: 0;
+            background-color: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .projects-grid .project-card:hover .project-thumb {
+            transform: scale(1.02);
         }
 
         .projects-grid .project-card {
@@ -596,16 +709,43 @@
         }
 
         .experience-item {
+            display: flex;
+            gap: 15px;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 15px 20px;
             transition: all 0.3s ease;
+            align-items: flex-start;
         }
 
         .experience-item:hover {
             border-color: var(--accent);
             transform: translateX(5px);
+        }
+
+        .exp-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            background-color: #1a1a2e;
+        }
+
+        [data-theme="light"] .exp-logo {
+            background-color: #e9ecef;
+        }
+
+        .experience-item:hover .exp-logo {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .exp-content {
+            flex: 1;
         }
 
         .exp-header {
@@ -639,6 +779,47 @@
         }
 
         /* Talks & Events Section */
+        .talks-scroller {
+            overflow: hidden;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            position: relative;
+            cursor: pointer;
+            padding: 15px 0;
+        }
+
+        .talks-scroller.paused {
+            cursor: default;
+        }
+
+        .talks-scroller .talks-track {
+            display: flex;
+            gap: 20px;
+            animation: scrollTalks 25s linear infinite;
+            width: max-content;
+            padding: 0 20px;
+        }
+
+        .talks-scroller.paused .talks-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTalks {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .talks-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
         .talks-grid {
             display: flex;
             gap: 20px;
@@ -653,9 +834,10 @@
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .talk-card:hover {
+        .talks-scroller .talk-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow);
             border-color: var(--accent);
@@ -695,6 +877,37 @@
                 height: 160px;
                 order: -1; /* Moves image to the top of the card on mobile */
                 margin-bottom: 10px;
+            }
+            .pub-thumb {
+                width: 100%;
+                height: 160px;
+                order: -1;
+                margin-bottom: 10px;
+            }
+            .exp-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .experience-item {
+                flex-direction: column;
+            }
+            .exp-logo {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Projects grid mobile */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid a[href="projects.html"] {
+                grid-column: span 1;
             }
         }
         /* Mobile and Tablet Responsiveness */
@@ -767,12 +980,15 @@
 
             .project-card {
                 flex-direction: column;
-                padding: 20px;
+                padding: 0;
             }
 
             .project-thumb {
                 width: 100%;
                 height: 160px;
+                border-radius: 0;
+                border: none;
+                border-bottom: 1px solid var(--border);
             }
 
             h2 {
@@ -799,6 +1015,23 @@
             }
 
             /* Improve news table on mobile */
+            .news-scroller {
+                height: 180px;
+                border-radius: 10px;
+            }
+
+            .news-item {
+                padding: 12px 15px;
+            }
+
+            .news-date {
+                font-size: 0.8rem;
+            }
+
+            .news-content {
+                font-size: 0.9rem;
+            }
+
             .news-table {
                 border-radius: 10px;
             }
@@ -923,8 +1156,8 @@
                 <!-- <a href="#news">News</a> -->
                 <a href="#publications">Publications</a>
                 <!-- <a href="#projects">Projects</a> -->
-                <!-- <a href="#experience">Experience</a>
-                <a href="#talks">Talks</a> -->
+                <!-- <a href="#experience">Experience</a> -->
+                <a href="#talks">Talks</a>
                 <a href="projects.html">All Projects</a>
                 <a href="cv.html">CV</a>
                 <!-- <a href="gallery.html">Gallery</a> -->
@@ -997,7 +1230,7 @@
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
                     </a>
-                    <a href="https://scholar.google.com/citations?user=YOUR_ID" class="no-style-link social-icon" title="Google Scholar">
+                    <a href="https://scholar.google.com/citations?user=LPDasNEAAAAJ&hl=en" class="no-style-link social-icon" title="Google Scholar">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5c.7.3 1.5.5 2.4.5 1.1 0 2.1-.3 3-.8L12 5.5l6.6 2.7c.9.5 1.9.8 3 .8.9 0 1.7-.2 2.4-.5L12 0zM5.8 16.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm12.4 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
                         </svg>
@@ -1008,32 +1241,66 @@
             <img src="images/profile.jpg" alt="Prakrut Kotecha" class="profile-photo" loading="lazy" onerror="this.src='https://via.placeholder.com/200/333/fff?text=Prakrut'">
         </div>
 
+        
         <!-- <section id="news">
             <h2>News & Events</h2>
-            <table class="news-table">
-                <tr>
-                    <td class="news-date">2025</td>
-                    <td class="news-content">Presented a Late Breaking result at the <strong>2025 IEEE-RAS 24th International Conference on Humanoid Robots</strong> <a href="#">[link]</a></td>
-                </tr>
-                <tr>
-                    <td class="news-date">2025</td>
-                    <td class="news-content">Gave a tutorial at <strong>Walmart Centre for Tech Excellence's Reinforcement Learning Workshop 2025</strong> <a href="#">[link]</a></td>
-                </tr>
-                <tr>
-                    <td class="news-date">2025</td>
-                    <td class="news-content">Participated in <strong>Bangalore Neuromorphic Engineering Workshop 2025</strong> <a href="#">[link]</a></td>
-                </tr>
-                <tr>
-                    <td class="news-date">2025</td>
-                    <td class="news-content">Teaching Assistantship for <strong>Foundation of Robotics</strong> Course</td>
-                </tr>
-            </table>
+            <div class="news-scroller" id="news-scroller">
+                <div class="news-track">
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Presented a Late Breaking result at the <strong>2025 IEEE-RAS 24th International Conference on Humanoid Robots</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Gave a tutorial at <strong>Walmart Centre for Tech Excellence's Reinforcement Learning Workshop 2025</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Participated in <strong>Bangalore Neuromorphic Engineering Workshop 2025</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Teaching Assistantship for <strong>Foundation of Robotics</strong> Course</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Presented a Late Breaking result at the <strong>2025 IEEE-RAS 24th International Conference on Humanoid Robots</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Gave a tutorial at <strong>Walmart Centre for Tech Excellence's Reinforcement Learning Workshop 2025</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Participated in <strong>Bangalore Neuromorphic Engineering Workshop 2025</strong></span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2025</span>
+                        <span class="news-content">Teaching Assistantship for <strong>Foundation of Robotics</strong> Course</span>
+                    </div>
+                </div>
+                <div class="news-hint">Click to pause</div>
+            </div>
         </section> -->
 
         <section id="publications">
             <h2>Publications & Patents</h2>
 
             <div class="pub-item">
+                <video autoplay loop muted playsinline class="pub-thumb">
+                    <source src="Videos/stride.mp4" type="video/mp4">
+                </video>
+                <div class="pub-details">
+                    <div class="pub-title">STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching</div>
+                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
+                    <div class="pub-venue">2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (Under Review)</div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <video autoplay loop muted playsinline class="pub-thumb">
+                    <source src="Videos/Lagrangian.mp4" type="video/mp4">
+                </video>
                 <div class="pub-details">
                     <div class="pub-title">Neural Predictive Control using Lagrangian Neural Networks for Quadruped Locomotion</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
@@ -1042,14 +1309,9 @@
             </div>
 
             <div class="pub-item">
-                <div class="pub-details">
-                    <div class="pub-title">STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching</div>
-                    <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
-                    <div class="pub-venue">2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (Under Review)</div>
-                </div>
-            </div>
-            
-            <div class="pub-item">
+                <video autoplay loop muted playsinline class="pub-thumb">
+                    <source src="Videos/gait-adaptation.mp4" type="video/mp4">
+                </video>
                 <div class="pub-details">
                     <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds using Model Predictive Control and Reinforcement Learning</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
@@ -1062,10 +1324,12 @@
             </div>
 
             <div class="pub-item">
+                <img src="Images/Main_fig copy.png" class="pub-thumb">
                 <div class="pub-details">
                     <div class="pub-title">Investigating Lagrangian Neural Networks for Infinite Horizon Planning in Quadrupedal Locomotion</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
                     <div class="pub-venue">7th International Conference of The Robotics Society, Advances In Robotics 2025</div>
+                    <div style="color: #ffd700; font-weight: 700; margin-top: 8px;">&#11088; &#127942; Best Poster Award &#127942; &#11088;</div>
                     <div class="pub-links">
                         <a href="https://www.arxiv.org/abs/2506.16079">Paper</a>
                     </div>
@@ -1073,6 +1337,7 @@
             </div>
 
             <div class="pub-item">
+                <img src="Videos/non-prehensile.gif" class="pub-thumb">
                 <div class="pub-details">
                     <div class="pub-title">A Hierarchical Manipulation Planning Framework Combining Striking, Pushing, and Pick & Place Motion Primitives</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
@@ -1085,6 +1350,9 @@
             </div>
 
             <div class="pub-item">
+                <video autoplay loop muted playsinline class="pub-thumb">
+                    <source src="Videos/pixguide-short.mp4" type="video/mp4">
+                </video>
                 <div class="pub-details">
                     <div class="pub-title">Navigation System for a vehicle and a method for navigation</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
@@ -1099,21 +1367,18 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="projects-grid">
-                <a href="project-qhumus.html" class="project-card">
+                <a href="project-non-prehensile.html" class="project-card">
+                    <img src="Videos/non-prehensile.gif" class="project-thumb" alt="Non-Prehensile Manipulation">
                     <div class="pub-details">
-                        <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
-                        <div class="pub-authors">Novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes.</div>
-                    </div>
-                </a>
-
-                <a href="project-bipedal-rl-mpc.html" class="project-card">
-                    <div class="pub-details">
-                        <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
-                        <div class="pub-authors">Hybrid control strategy combining Reinforcement Learning with Model Predictive Control.</div>
+                        <div class="pub-title">Non-Prehensile Manipulation</div>
+                        <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
                     </div>
                 </a>
 
                 <a href="project-quadruped-gait.html" class="project-card">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/gait-adaptation.mp4" type="video/mp4">
+                    </video>
                     <div class="pub-details">
                         <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds</div>
                         <div class="pub-authors">Adaptive gait generation using MPC integrated with RL for dynamic locomotion.</div>
@@ -1121,15 +1386,18 @@
                 </a>
 
                 <a href="project-lagrangian-nn.html" class="project-card">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/Lagrangian.mp4" type="video/mp4">
+                    </video>
                     <div class="pub-details">
                         <div class="pub-title">Lagrangian Neural Networks for Quadrupedal Locomotion</div>
                         <div class="pub-authors">Physics-informed neural networks for infinite horizon planning.</div>
                     </div>
                 </a>
 
-                <a href="projects.html" class="project-card" style="justify-content: center; text-align: center;">
-                    <div class="pub-details">
-                        <div class="pub-title" style="color: var(--accent);">View All Projects &rarr;</div>
+                <a href="projects.html" class="project-card" style="justify-content: center; align-items: center; min-height: 80px; grid-column: span 3;">
+                    <div class="pub-details" style="text-align: center;">
+                        <div class="pub-title" style="color: var(--accent); font-size: 1.5rem;">View All Projects &rarr;</div>
                     </div>
                 </a>
             </div>
@@ -1139,85 +1407,140 @@
             <h2>Experience</h2>
             <div class="experience-list">
                 <div class="experience-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Research Intern</div>
-                        <div class="exp-date">Feb 2026 - Present</div>
+                    <img src="images/Infosys_logo.png" alt="Infosys" class="exp-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/60/007fff/ffffff?text=Infosys'">
+                    <div class="exp-content">
+                        <div class="exp-header">
+                            <div class="exp-title">Research Intern</div>
+                            <div class="exp-date">Feb 2026 - Present</div>
+                        </div>
+                        <div class="exp-org">Advanced Humanoid Research Lab, Infosys Limited</div>
+                        <div class="exp-desc">Humanoid robotics research and development</div>
                     </div>
-                    <div class="exp-org">Advanced Humanoid Research Lab, Infosys Limited</div>
-                    <div class="exp-desc">Humanoid robotics research and development</div>
                 </div>
 
                 <div class="experience-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Research Intern</div>
-                        <div class="exp-date">Jan 2022 - March 2023</div>
+                    <img src="images/rrc_logo.jpeg" alt="IIIT Hyderabad" class="exp-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/60/cc0000/ffffff?text=IIIT'">
+                    <div class="exp-content">
+                        <div class="exp-header">
+                            <div class="exp-title">Research Intern</div>
+                            <div class="exp-date">Jan 2022 - March 2023</div>
+                        </div>
+                        <div class="exp-org">Robotics Research Centre (RRC),International Institute of Information Technology, Hyderabad</div>
+                        <div class="exp-desc">Developed a framework for Hybrid Manipulation using a Mobile manipulator under <a href="https://www.iiitdm.ac.in/people/faculty/nagamanikandan.g@iiitdm.ac.in">Prof. Nagamanikandan Govindan</a>.</div>
                     </div>
-                    <div class="exp-org">Robotics Research Centre (RRC),International Institute of Information Technology, Hyderabad</div>
-                    <div class="exp-desc">Developed a framework for Hybrid Manipulation using a Mobile manipulator under <a href="https://www.iiitdm.ac.in/people/faculty/nagamanikandan.g@iiitdm.ac.in">Prof. Nagamanikandan Govindan</a>.</div>
                 </div>
 
                 <div class="experience-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Summer Intern</div>
-                        <div class="exp-date">May 2021 - Sept 2021</div>
+                    <img src="images/Indian_Institute_of_Space_Science_and_Technology_Logo.jpg" alt="IIST" class="exp-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/60/1a73e8/ffffff?text=IIST'">
+                    <div class="exp-content">
+                        <div class="exp-header">
+                            <div class="exp-title">Summer Intern</div>
+                            <div class="exp-date">May 2021 - Sept 2021</div>
+                        </div>
+                        <div class="exp-org">Indian Institute of Space Science and Technology</div>
+                        <div class="exp-desc">Worked on a Hybrid dynamics-based controller to produce dynamic walking gait for Quadruped under <a href="https://www.iist.ac.in/people-faculty-profile/sam-k-zachariah">Prof. Sam Zachariah</a></div>
                     </div>
-                    <div class="exp-org">Indian Institute of Space Science and Technology</div>
-                    <div class="exp-desc">Worked on a Hybrid dynamics-based controller to produce dynamic walking gait for Quadruped under <a href="https://www.iist.ac.in/people-faculty-profile/sam-k-zachariah">Prof. Sam Zachariah</a></div>
                 </div>
 
                 <div class="experience-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Researcher</div>
-                        <div class="exp-date">2019 - 2022</div>
+                    <img src="images/ivlabs_vnit_logo.jpeg" alt="VNIT" class="exp-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/60/ff6600/ffffff?text=VNIT'">
+                    <div class="exp-content">
+                        <div class="exp-header">
+                            <div class="exp-title">Researcher</div>
+                            <div class="exp-date">2019 - 2022</div>
+                        </div>
+                        <div class="exp-org">IvLabs Robotics Club, VNIT Nagpur</div>
+                        <div class="exp-desc">Did various robotics projects and served as Alumni Secretary at IvLabs Robotics Club under <a href="https://scholar.google.com/citations?user=B9InqKQAAAAJ&hl=en">Prof. Shital Chiddarwar</a></div>
                     </div>
-                    <div class="exp-org">IvLabs Robotics Club, VNIT Nagpur</div>
-                    <div class="exp-desc">Did various robotics projects and served as Alumni Secretary at IvLabs Robotics Club under <a href="https://scholar.google.com/citations?user=B9InqKQAAAAJ&hl=en">Prof. Shital Chiddarwar</a></div>
                 </div>
             </div>
         </section>
 
         <section id="talks">
             <h2>Talks & Presentations</h2>
-            <div class="talks-grid">
-                <div class="talk-card">
-                    <img src="images/RL_workshop_new.jpg" alt="RL Workshop" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
-                    <div class="talk-card-content">
-                        <div class="talk-card-title">RL Tutorial</div>
-                        <div class="talk-card-venue">Walmart Centre for Tech Excellence RL Workshop, 2025 and 2026</div>
+            <div class="talks-scroller" id="talks-scroller">
+                <div class="talks-track">
+                    <div class="talk-card">
+                        <img src="images/RL_workshop_new.jpg" alt="RL Workshop" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">RL Tutorial</div>
+                            <div class="talk-card-venue">Walmart Centre for Tech Excellence RL Workshop, 2025 and 2026</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="talk-card">
-                    <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
-                    <div class="talk-card-content">
-                        <div class="talk-card-title">Late Breaking Result</div>
-                        <div class="talk-card-venue">IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025</div>
+                    <div class="talk-card">
+                        <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Late Breaking Result</div>
+                            <div class="talk-card-venue">IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="talk-card">
-                    <img src="images/neuromorphic.jpg" alt="Neuromorphic Computing" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Neuromorphic+Computing'">
-                    <div class="talk-card-content">
-                        <div class="talk-card-title">Oral Presentation</div>
-                        <div class="talk-card-venue">Neuromorphic Engineering Workshop, 2025</div>
+                    <div class="talk-card">
+                        <img src="images/neuromorphic.jpg" alt="Neuromorphic Computing" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Neuromorphic+Computing'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">Neuromorphic Engineering Workshop, 2025</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="talk-card">
-                    <img src="images/case.jpg" alt="CASE Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CASE+Conference'">
-                    <div class="talk-card-content">
-                        <div class="talk-card-title">Oral Presentation</div>
-                        <div class="talk-card-venue">IEEE Conference on Automation Science and Engineering (CASE), 2024</div>
+                    <div class="talk-card">
+                        <img src="images/case.jpg" alt="CASE Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CASE+Conference'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">IEEE Conference on Automation Science and Engineering (CASE), 2024</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="talk-card">
-                    <img src="images/cyphyss.png" alt="CyPhySS Symposium" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
-                    <div class="talk-card-content">
-                        <div class="talk-card-title">Oral Presentation</div>
-                        <div class="talk-card-venue">Cyber-Physical Systems Symposium (CyPhySS), 2024</div>
+                    <div class="talk-card">
+                        <img src="images/cyphyss.png" alt="CyPhySS Symposium" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">Cyber-Physical Systems Symposium (CyPhySS), 2024</div>
+                        </div>
+                    </div>
+                    <!-- Duplicate for seamless scroll -->
+                    <div class="talk-card">
+                        <img src="images/RL_workshop_new.jpg" alt="RL Workshop" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=RL+Workshop'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">RL Tutorial</div>
+                            <div class="talk-card-venue">Walmart Centre for Tech Excellence RL Workshop, 2025 and 2026</div>
+                        </div>
+                    </div>
+
+                    <div class="talk-card">
+                        <img src="images/humanoid.jpg" alt="Humanoid Robots Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Humanoid+Robots'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Late Breaking Result</div>
+                            <div class="talk-card-venue">IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="talk-card">
+                        <img src="images/neuromorphic.jpg" alt="Neuromorphic Computing" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=Neuromorphic+Computing'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">Neuromorphic Engineering Workshop, 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="talk-card">
+                        <img src="images/case.jpg" alt="CASE Conference" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CASE+Conference'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">IEEE Conference on Automation Science and Engineering (CASE), 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="talk-card">
+                        <img src="images/cyphyss.png" alt="CyPhySS Symposium" class="talk-card-img" loading="lazy" onerror="this.src='https://via.placeholder.com/250x140/1a1a2e/00d4ff?text=CyPhySS'">
+                        <div class="talk-card-content">
+                            <div class="talk-card-title">Oral Presentation</div>
+                            <div class="talk-card-venue">Cyber-Physical Systems Symposium (CyPhySS), 2024</div>
+                        </div>
                     </div>
                 </div>
+                <div class="talks-hint">Click to pause</div>
             </div>
         </section>
         
@@ -1228,6 +1551,20 @@
     </div>
 
     <script>
+        // Talks Scroller - Click to pause/resume
+        const talksScroller = document.getElementById('talks-scroller');
+        if (talksScroller) {
+            talksScroller.addEventListener('click', () => {
+                talksScroller.classList.toggle('paused');
+                const hint = talksScroller.querySelector('.talks-hint');
+                if (talksScroller.classList.contains('paused')) {
+                    hint.textContent = 'Click to resume';
+                } else {
+                    hint.textContent = 'Click to pause';
+                }
+            });
+        }
+
         // Theme Toggle
         const toggleButton = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;

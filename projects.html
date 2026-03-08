@@ -213,18 +213,31 @@
         }
 
         .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-section {
+            margin-bottom: 60px;
+        }
+
+        .project-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
         }
 
         .project-card {
             display: flex;
-            justify-content: space-between;
-            gap: 25px;
-            padding: 25px;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 16px;
             text-decoration: none;
             color: inherit;
             transition: all 0.3s ease;
@@ -274,12 +287,11 @@
         }
 
         .project-thumb {
-            width: 280px;
+            width: 100%;
             height: 180px;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 12px;
             border: 2px solid var(--border);
-            flex-shrink: 0;
             background-color: var(--card-bg);
             transition: all 0.3s ease;
         }
@@ -340,6 +352,10 @@
         }
 
         @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .nav-container { 
                 flex-direction: column; 
                 gap: 15px; 
@@ -425,179 +441,187 @@
             <p>A collection of my research and academic projects in robotics and control systems</p>
         </div>
 
-        <div class="projects-grid">
-            <a href="project-kimera-perception.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">KIMERA - Visual SLAM Perception</div>
-                    <div class="pub-authors">Implemented visual SLAM using KIMERA for real-time metric-semantic localization and mapping.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Visual SLAM</span>
-                        <span class="pub-tag">KIMERA</span>
-                        <span class="pub-tag">Robotics</span>
+        <div class="project-section">
+            <h2>Course Projects</h2>
+            <div class="projects-grid">
+                <a href="project-bipedal-rl-mpc.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/bipedal-rl-mpc.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
+                        <div class="pub-authors">Implemented a hybrid control strategy combining Reinforcement Learning with Model Predictive Control.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Bipedal Robots</span>
+                            <span class="pub-tag">RL</span>
+                            <span class="pub-tag">MPC</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/Perception_part1.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-qhumus.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
-                    <div class="pub-authors">Designed a novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes without rearrangement.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Reconfigurable Robotics</span>
-                        <span class="pub-tag">Morphology</span>
-                        <span class="pub-tag">Multi-modal Locomotion</span>
+                <a href="project-collision-cbf.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/cbf.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">Collision Cone Control Barrier Function</div>
+                        <div class="pub-authors">Safety barriers for UAV obstacle avoidance using Control Barrier Functions.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">UAV</span>
+                            <span class="pub-tag">Control Barrier Functions</span>
+                            <span class="pub-tag">Safety</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/Qhumus_s2h.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-bipedal-rl-mpc.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Combining RL and MPC for Bipedal Walking</div>
-                    <div class="pub-authors">Implemented a hybrid control strategy combining Reinforcement Learning with Model Predictive Control.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Bipedal Robots</span>
-                        <span class="pub-tag">RL</span>
-                        <span class="pub-tag">MPC</span>
+                <a href="project-hierarchical-manipulation.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/IL.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">Hierarchical Manipulation Planning</div>
+                        <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Manipulation Planning</span>
+                            <span class="pub-tag">Motion Primitives</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/bipedal-rl-mpc.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-quadruped-gait.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds</div>
-                    <div class="pub-authors">Adaptive gait generation using MPC integrated with RL for dynamic quadrupedal locomotion.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Quadrupedal Locomotion</span>
-                        <span class="pub-tag">MPC</span>
-                        <span class="pub-tag">Gait Optimization</span>
+                <a href="project-kimera-perception.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/Perception_part1.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">KIMERA - Visual SLAM Perception</div>
+                        <div class="pub-authors">Implemented visual SLAM using KIMERA for real-time metric-semantic localization and mapping.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Visual SLAM</span>
+                            <span class="pub-tag">KIMERA</span>
+                            <span class="pub-tag">Robotics</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/gait-adaptation.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-lagrangian-nn.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Lagrangian Neural Networks for Quadrupedal Locomotion</div>
-                    <div class="pub-authors">Physics-informed neural networks for infinite horizon planning in quadrupedal locomotion.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Deep Learning</span>
-                        <span class="pub-tag">Physics-Informed ML</span>
-                        <span class="pub-tag">Dynamics</span>
+                <a href="project-mpc-ugv.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/UGV.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">MPC for UGVs in Unknown Environments</div>
+                        <div class="pub-authors">Waypoint generation and navigation controls for obstacle avoidance using MPC.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">UGV</span>
+                            <span class="pub-tag">MPC</span>
+                            <span class="pub-tag">Navigation</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/Lagrangian.mp4" type="video/mp4">
-                </video>            
-            </a>
+                </a>
+            </div>
+        </div>
 
-            <a href="project-non-prehensile.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Non-Prehensile Manipulation</div>
-                    <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Manipulation</span>
-                        <span class="pub-tag">Trajectory Optimization</span>
-                        <span class="pub-tag">Gripper Design</span>
+        <div class="project-section">
+            <h2>Research Projects</h2>
+            <div class="projects-grid">
+                <a href="project-qhumus.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/Qhumus_s2h.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">QHuMuS - Reconfigurable Robots</div>
+                        <div class="pub-authors">Designed a novel system that transitions between serpentine, wheeled-quadruped, and humanoid modes without rearrangement.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Reconfigurable Robotics</span>
+                            <span class="pub-tag">Morphology</span>
+                            <span class="pub-tag">Multi-modal Locomotion</span>
+                        </div>
                     </div>
-                </div>
-                <img src="Videos/non-prehensile.gif" class="project-thumb">
-            </a>
+                </a>
 
-            <a href="project-hierarchical-manipulation.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Hierarchical Manipulation Planning</div>
-                    <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Manipulation Planning</span>
-                        <span class="pub-tag">Motion Primitives</span>
+                <a href="project-quadruped-gait.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/gait-adaptation.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">Real-Time Gait Adaptation for Quadrupeds</div>
+                        <div class="pub-authors">Adaptive gait generation using MPC integrated with RL for dynamic quadrupedal locomotion.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Quadrupedal Locomotion</span>
+                            <span class="pub-tag">MPC</span>
+                            <span class="pub-tag">Gait Optimization</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/IL.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-quadruped-control.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Control and Design of Quadruped Robot</div>
-                    <div class="pub-authors">Hybrid Dynamics-based controller for dynamic walking gait generation.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Quadruped</span>
-                        <span class="pub-tag">Hybrid Dynamics</span>
-                        <span class="pub-tag">Control Design</span>
+                <a href="project-lagrangian-nn.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/Lagrangian.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">Lagrangian Neural Networks for Quadrupedal Locomotion</div>
+                        <div class="pub-authors">Physics-informed neural networks for infinite horizon planning in quadrupedal locomotion.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Deep Learning</span>
+                            <span class="pub-tag">Physics-Informed ML</span>
+                            <span class="pub-tag">Dynamics</span>
+                        </div>
                     </div>
-                </div>
-                <img src="Videos/quadruped-control.gif" class="project-thumb">
-            </a>
+                </a>
 
-            <a href="project-biped-optimization.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Gait and Trajectory Optimization for Bipeds</div>
-                    <div class="pub-authors">Trajectory optimization on 5-link kneed walker with non-linear dynamics and chaos theory.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Bipedal</span>
-                        <span class="pub-tag">Trajectory Optimization</span>
-                        <span class="pub-tag">Chaos Theory</span>
+                <a href="project-non-prehensile.html" class="project-card has-link">
+                    <img src="Videos/non-prehensile.gif" class="project-thumb">
+                    <div class="pub-details">
+                        <div class="pub-title">Non-Prehensile Manipulation</div>
+                        <div class="pub-authors">Framework combining striking, pushing, and pick & place motion primitives.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Manipulation</span>
+                            <span class="pub-tag">Trajectory Optimization</span>
+                            <span class="pub-tag">Gripper Design</span>
+                        </div>
                     </div>
-                </div>
-                <img src="Videos/biped-optimization.gif" class="project-thumb">
-            </a>
+                </a>
 
-            <a href="project-mpc-ugv.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">MPC for UGVs in Unknown Environments</div>
-                    <div class="pub-authors">Waypoint generation and navigation controls for obstacle avoidance using MPC.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">UGV</span>
-                        <span class="pub-tag">MPC</span>
-                        <span class="pub-tag">Navigation</span>
+                <a href="project-quadruped-control.html" class="project-card has-link">
+                    <img src="Videos/quadruped-control.gif" class="project-thumb">
+                    <div class="pub-details">
+                        <div class="pub-title">Control and Design of Quadruped Robot</div>
+                        <div class="pub-authors">Hybrid Dynamics-based controller for dynamic walking gait generation.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Quadruped</span>
+                            <span class="pub-tag">Hybrid Dynamics</span>
+                            <span class="pub-tag">Control Design</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/UGV.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-collision-cbf.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">Collision Cone Control Barrier Function</div>
-                    <div class="pub-authors">Safety barriers for UAV obstacle avoidance using Control Barrier Functions.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">UAV</span>
-                        <span class="pub-tag">Control Barrier Functions</span>
-                        <span class="pub-tag">Safety</span>
+                <a href="project-biped-optimization.html" class="project-card has-link">
+                    <img src="Videos/biped-optimization.gif" class="project-thumb">
+                    <div class="pub-details">
+                        <div class="pub-title">Gait and Trajectory Optimization for Bipeds</div>
+                        <div class="pub-authors">Trajectory optimization on 5-link kneed walker with non-linear dynamics and chaos theory.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Bipedal</span>
+                            <span class="pub-tag">Trajectory Optimization</span>
+                            <span class="pub-tag">Chaos Theory</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/cbf.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
 
-            <a href="project-pixguide.html" class="project-card has-link">
-                <div class="pub-details">
-                    <div class="pub-title">PixGuide Navigation Device</div>
-                    <div class="pub-authors">Hardware navigation device for two-wheelers developed at IvLabs.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag">Hardware</span>
-                        <span class="pub-tag">Navigation</span>
-                        <span class="pub-tag">Embedded Systems</span>
+                <a href="project-pixguide.html" class="project-card has-link">
+                    <video autoplay loop muted playsinline class="project-thumb">
+                        <source src="Videos/pixguide-short.mp4" type="video/mp4">
+                    </video>
+                    <div class="pub-details">
+                        <div class="pub-title">PixGuide Navigation Device</div>
+                        <div class="pub-authors">Hardware navigation device for two-wheelers developed at IvLabs.</div>
+                        <div class="pub-tags">
+                            <span class="pub-tag">Hardware</span>
+                            <span class="pub-tag">Navigation</span>
+                            <span class="pub-tag">Embedded Systems</span>
+                        </div>
                     </div>
-                </div>
-                <video autoplay loop muted playsinline class="project-thumb">
-                    <source src="Videos/pixguide-short.mp4" type="video/mp4">
-                </video>
-            </a>
+                </a>
+            </div>
         </div>
 
         <footer>
