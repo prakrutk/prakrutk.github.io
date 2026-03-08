@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMERA Perception | Prakrut Kotecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-header">
+            <h1>KIMERA - Visual SLAM Perception</h1>
+            <div class="project-meta">
+                <span class="meta-item"><strong>Status:</strong> Completed</span>
+                <span class="meta-item"><strong>Tools:</strong> ROS, C++, KIMERA-VIO, OpenCV</span>
+                <span class="meta-item"><strong>Lab:</strong> IvLabs</span>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <video autoplay loop muted playsinline class="demo-video">
+                <source src="Videos/Perception_part1.mp4" type="video/mp4">
+            </video>
+            <video autoplay loop muted playsinline class="demo-video">
+                <source src="Videos/Perception_part2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This project implements <strong>visual SLAM (Simultaneous Localization and Mapping)</strong> using <strong>KIMERA</strong>, 
+                an open-source library for real-time metric-semantic visual-inertial odometry. KIMERA combines visual-inertial odometry 
+                with robust loop closure detection and 3D semantic mesh reconstruction to provide accurate localization and mapping 
+                in real-time.
+            </p>
+        </section>
+
+        <section>
+            <h2>System Overview</h2>
+            <p>
+                KIMERA-VIO (Visual-Inertial Odometry) processes stereo images and IMU data to estimate camera pose and build a 3D map. 
+                The pipeline consists of:
+            </p>
+            <ul>
+                <li><strong>Front-end:</strong> Feature extraction and tracking using ORB features</li>
+                <li><strong>IMU Preintegration:</strong> Fusing inertial measurements for robust pose estimation</li>
+                <li><strong>Back-end:</strong> Sliding window optimization using factor graphs</li>
+                <li><strong>Loop Closure:</strong> Place recognition using DBoW2 for global consistency</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Key Features</h2>
+            <ul>
+                <li>Real-time performance on embedded platforms</li>
+                <li>Robust to lighting variations and motion blur</li>
+                <li>Semantic segmentation for object-aware mapping</li>
+                <li>Distributed mapping for large-scale environments</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <p>
+                The system was tested on the EuRoC MAV dataset achieving sub-centimeter localization accuracy. 
+                The semantic mesh reconstruction enabled obstacle avoidance for autonomous navigation.
+            </p>
+        </section>
+    </div>
+
+</body>
+</html>

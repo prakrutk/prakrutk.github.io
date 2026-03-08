@@ -144,6 +144,27 @@ nav {
     box-shadow: var(--shadow);
 }
 
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.demo-video {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 section {
     margin-bottom: 45px;
 }
