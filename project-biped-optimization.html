@@ -4,13 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biped Optimization | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="project-styles.css">
+    <style>
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            color: white;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .github-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .topic-tag {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
         </div>
     </nav>
 
@@ -19,28 +70,95 @@
             <h1>Gait and Trajectory Optimization for Bipeds</h1>
             <div class="project-meta">
                 <span class="meta-item"><strong>Status:</strong> Completed</span>
-                <span class="meta-item"><strong>Tools:</strong> MATLAB, Python</span>
+                <span class="meta-item"><strong>Tools:</strong> MATLAB, Python, CasADi</span>
+                <span class="meta-item"><strong>Language:</strong> Python</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/IvLabs/biped_trajectory_optimization" class="btn btn-primary" target="_blank">GitHub</a>
+                <a href="https://youtu.be/Z-NGuobeeFc" class="btn btn-primary" target="_blank">YouTube</a>
+                <div class="github-badge">
+                    <span class="stat-item"><a href="https://github.com/IvLabs/biped_trajectory_optimization" target="_blank">86 stars</a> · 9 forks</span>
+                    <span class="topic-tag">biped</span>
+                    <span class="topic-tag">casadi</span>
+                    <span class="topic-tag">optimal-control</span>
+                    <span class="topic-tag">trajectory-optimization</span>
+                </div>
             </div>
         </div>
 
-        <img src="images/biped-optimization.jpg" alt="Biped Optimization" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Biped+Optimization'">
+        <img src="images/biped-optimization.jpg" alt="Biped Optimization" class="hero-image" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Biped+Optimization'">
 
         <section>
             <h2>Abstract</h2>
             <p>
                 This project implements <strong>trajectory optimization</strong> on a 5-link kneed bipedal walker. 
-                Generated both periodic and non-periodic gaits for flat and uneven surfaces. Also developed 
-                understanding of non-linear dynamics and chaos theory for passive walking.
+                Generated both periodic and non-periodic gaits for flat and uneven surfaces including sinusoidal, 
+                staired, and sloped terrains. Also developed understanding of non-linear dynamics and chaos 
+                theory for passive walking.
+            </p>
+            <p>
+                Implemented trajectory optimization using direct collocation methods. Developed a two-link 
+                passive walker and simulated it on MATLAB to understand chaotic dynamics and bifurcation behavior.
+            </p>
+            <p style="color: var(--accent-secondary); font-style: italic; margin-top: 10px;">
+                Note: This project is no longer maintained.
             </p>
         </section>
 
         <section>
-            <h2>Key Components</h2>
+            <h2>5-Link Biped Model</h2>
             <ul>
-                <li><strong>5-link biped model:</strong> With knees and point feet</li>
-                <li><strong>Trajectory optimization:</strong> Using direct collocation methods</li>
-                <li><strong>Passive walker:</strong> Two-link walker demonstrating chaotic dynamics</li>
-                <li><strong>Stability analysis:</strong> Poincaré maps and basin of attraction</li>
+                <li><strong>Structure:</strong> Kneed biped with point feet</li>
+                <li><strong>Joints:</strong> 5 rotational joints (2 hips, 2 knees, 1 torso)</li>
+                <li><strong>Dynamics:</strong> Non-linear equations of motion derived using Lagrangian mechanics</li>
+                <li><strong>Contact:</strong> Rigid body contacts with ground with friction constraints</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Trajectory Optimization</h2>
+            <p>
+                Using <strong>direct collocation methods</strong> with CasADi for optimal control:
+            </p>
+            <ul>
+                <li><strong>Discretization:</strong> Multi-phase optimal control problem</li>
+                <li><strong>Constraints:</strong> Dynamics, joint limits, contact forces, friction cones</li>
+                <li><strong>Cost:</strong> Minimize energy consumption and tracking error</li>
+                <li><strong>Gait Types:</strong> Periodic (walking) and non-periodic (stepping)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Terrain Adaptation</h2>
+            <p>Successfully generated stable gaits for various terrains:</p>
+            <ul>
+                <li><strong>Flat terrain:</strong> Standard walking gait at 0.3-1.0 m/s</li>
+                <li><strong>Sinusoidal terrain:</strong> Periodic gait adapting to wave patterns</li>
+                <li><strong>Staired terrain:</strong> Ascending and descending stairs</li>
+                <li><strong>Sloped terrain:</strong> Walking up and down inclines</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Passive Walking & Chaos</h2>
+            <p>
+                Explored the fascinating dynamics of <strong>2-link passive walkers</strong> — robots that 
+                walk down a slope with no actuators, powered only by gravity:
+            </p>
+            <ul>
+                <li><strong>Poincaré maps:</strong> Analyzing fixed points and stability</li>
+                <li><strong>Bifurcation analysis:</strong> Studying gait transitions</li>
+                <li><strong>Basin of attraction:</strong> Understanding robustness to perturbations</li>
+                <li><strong>Chaotic dynamics:</strong> Demonstrating sensitive dependence on initial conditions</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Basic Systems</h2>
+            <p>The repository also includes trajectory optimization examples for fundamental systems:</p>
+            <ul>
+                <li><strong>Cartpole:</strong> Swing-up control using Python (CasADi) and C++</li>
+                <li><strong>Simple Pendulum:</strong> Time-optimal swing using MATLAB</li>
             </ul>
         </section>
 
@@ -48,9 +166,41 @@
             <h2>Results</h2>
             <p>
                 Generated stable periodic gaits for walking speeds of 0.3-1.0 m/s. Demonstrated chaotic behavior 
-                in passive walkers and analyzed bifurcations in the gait family.
+                in passive walkers and analyzed bifurcations in the gait family. Human and ostrich-style gaits 
+                were both achieved with the 5-link model.
             </p>
         </section>
     </div>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        
+        const icons = { 'dark': '&#9728;', 'light': '&#9790;' };
+        const labels = { 'dark': 'Switch to Light Theme', 'light': 'Switch to Dark Theme' };
+        
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = current === 'dark' ? 'light' : 'dark';
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+        });
+    </script>
 </body>
 </html>

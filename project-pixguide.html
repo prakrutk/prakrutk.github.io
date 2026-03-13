@@ -4,13 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixGuide Navigation | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="project-styles.css">
+    <style>
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            color: white;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
         </div>
     </nav>
 
@@ -18,22 +54,71 @@
         <div class="project-header">
             <h1>PixGuide Navigation Device</h1>
             <div class="project-meta">
-                <span class="meta-item"><strong>Status:</strong> Completed</span>
-                <span class="meta-item"><strong>Lab:</strong> IvLabs</span>
+                <span class="meta-item"><strong>Status:</strong> Completed (Published Patent)</span>
+                <span class="meta-item"><strong>Lab:</strong> IvLabs, VNIT Nagpur</span>
                 <span class="meta-item"><strong>Advisor:</strong> Prof. Shital Chiddarwar</span>
-                <span class="meta-item"><strong>Tools:</strong> Arduino, C++, GPS, OLED</span>
+                <span class="meta-item"><strong>Tools:</strong> Arduino, C++, GPS, OLED, Bluetooth</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/prakrutk/PixGuide" class="btn btn-primary" target="_blank">GitHub</a>
+                <span class="meta-item"><a href="https://github.com/prakrutk/PixGuide" target="_blank" style="color: var(--accent);">10 stars</a> · 1 fork · C++</span>
             </div>
         </div>
 
-        <img src="images/pixguide.jpg" alt="PixGuide" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=PixGuide'">
+        <img src="images/pixguide.jpg" alt="PixGuide" class="hero-image" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=PixGuide'">
 
         <section>
             <h2>Abstract</h2>
             <p>
                 <strong>PixGuide</strong> is a hardware navigation device for two-wheelers designed to help riders 
                 navigate without mounting phones or expensive GPS devices on their vehicles. The device provides 
-                turn-by-turn directions via an intuitive display.
+                turn-by-turn directions via an intuitive LED matrix display.
             </p>
+            <p>
+                The main motive is to help two-wheelers navigate without having to use different applications 
+                or mounting mobile phones on their vehicles. The device is compact and works in bright sunlight 
+                as well as in the dark.
+            </p>
+            <p>
+                This project resulted in a <strong>published patent</strong> (CBR Ref. 201921049473, 2018) for an innovative 
+                navigation system using voice pack technology.
+            </p>
+        </section>
+
+        <section>
+            <h2>Innovation</h2>
+            <p>
+                The key innovation is using <strong>Google Maps voice pack frequencies</strong> to decode navigation 
+                commands. Instead of expensive Google APIs, the device listens to audio cues from Google Maps and 
+                maps them to visual directions on the LED display.
+            </p>
+            <ul>
+                <li>No custom app required</li>
+                <li>Works with existing Google Maps</li>
+                <li>Extremely low cost compared to commercial solutions</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Hardware Components</h2>
+            <ul>
+                <li><strong>Arduino Pro Mini:</strong> Main microcontroller</li>
+                <li><strong>MAX7219 8x8 LED Matrix:</strong> Direction display</li>
+                <li><strong>GPS Module:</strong> Location tracking</li>
+                <li><strong>Bluetooth Audio Receiver:</strong> Receives voice commands from phone</li>
+                <li><strong>Li-ion Battery:</strong> Portable power supply</li>
+                <li><strong>Operational Amplifier:</strong> Signal processing</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Mechanical Design</h2>
+            <ul>
+                <li><strong>Garmin Quarter Mount:</strong> Compatible with all cycle/motorcycle handlebars</li>
+                <li><strong>Sun Hood:</strong> Sliding mechanism for daylight visibility</li>
+                <li><strong>Torch Slot:</strong> Front mount for visibility at night</li>
+                <li><strong>Water-resistant:</strong> Weatherproof enclosure</li>
+            </ul>
         </section>
 
         <section>
@@ -44,6 +129,7 @@
                 <li><strong>Direction indicators:</strong> LED arrows for turn directions</li>
                 <li><strong>Bluetooth connectivity:</strong> Receives route from smartphone app</li>
                 <li><strong>Low power:</strong> Runs on rechargeable battery</li>
+                <li><strong>Day/Night visibility:</strong> Clear display in all lighting conditions</li>
             </ul>
         </section>
 
@@ -51,9 +137,41 @@
             <h2>Impact</h2>
             <p>
                 Provides an affordable and safe navigation solution for two-wheeler riders in India, 
-                reducing the need for phone mounting and improving road safety.
+                reducing the need for phone mounting and improving road safety. Can also be extended 
+                for four-wheeled vehicles and used as a cycling direction indicator.
             </p>
         </section>
     </div>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        
+        const icons = { 'dark': '&#9728;', 'light': '&#9790;' };
+        const labels = { 'dark': 'Switch to Light Theme', 'light': 'Switch to Dark Theme' };
+        
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = current === 'dark' ? 'light' : 'dark';
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+        });
+    </script>
 </body>
 </html>

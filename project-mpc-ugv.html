@@ -4,13 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MPC for UGV | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="project-styles.css">
+    <style>
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            color: white;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .github-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .stat-item {
+            background: var(--card-glass);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .stat-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .stat-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
         </div>
     </nav>
 
@@ -20,31 +77,60 @@
             <div class="project-meta">
                 <span class="meta-item"><strong>Status:</strong> Completed</span>
                 <span class="meta-item"><strong>Course:</strong> Foundation of Robotics</span>
-                <span class="meta-item"><strong>Tools:</strong> Python, CasADi</span>
+                <span class="meta-item"><strong>Tools:</strong> Python, CasADi, PyBullet, ROS/Gazebo</span>
             </div>
             <div class="project-links">
-                <a href="#" class="btn btn-primary">GitHub</a>
+                <a href="https://github.com/prakrutk/MPC-for-UGV" class="btn btn-primary" target="_blank">GitHub</a>
+                <a href="https://indianinstituteofscience-my.sharepoint.com/:p:/g/personal/lavanyag_iisc_ac_in/EWT43Lk3wYpPlOAOr7jsQWkBSCQMqg0V7TM0YBouv2tnNA?e=cAlguJ" class="btn btn-primary" target="_blank">Report</a>
+                <div class="github-badge">
+                    <span class="stat-item">Python</span>
+                    <span class="stat-item">Updated May 2024</span>
+                </div>
             </div>
         </div>
 
-        <img src="images/ugv.jpg" alt="UGV MPC" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=UGV+MPC'">
+        <img src="images/ugv.jpg" alt="UGV MPC" class="hero-image" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=UGV+MPC'">
 
         <section>
             <h2>Abstract</h2>
             <p>
                 Course project implementing <strong>Model Predictive Control (MPC)</strong> for Unmanned Ground Vehicles (UGV) 
                 navigating unknown environments with obstacle avoidance. The system generates optimal waypoints 
-                and controls in real-time.
+                and controls in real-time using perception-based waypoint generation.
             </p>
         </section>
 
         <section>
-            <h2>Methodology</h2>
+            <h2>System Model</h2>
+            <p>
+                The system uses a <strong>bicycle model</strong> with the following state and control variables:
+            </p>
             <ul>
-                <li><strong>System model:</strong> Bicycle model with kinematic constraints</li>
+                <li><strong>State:</strong> X = (X, Y, ψ, ẋ, ẏ, ψ̇) — position, heading, and velocities</li>
+                <li><strong>Control:</strong> U = (δ, V) — steering angle and velocity</li>
+                <li><strong>Dynamics:</strong> Derived using tire cornering stiffness and longitudinal stiffness</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Waypoint Generation</h2>
+            <p>
+                Perception module that converts camera images into navigable waypoints:
+            </p>
+            <ul>
+                <li><strong>Canny Edge Detection:</strong> For obstacle boundary extraction</li>
+                <li><strong>Hough Line Transform:</strong> To detect drivable paths</li>
+                <li><strong>Grid mapping:</strong> Convert 2D waypoints to occupancy grid for MPC</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>MPC Formulation</h2>
+            <ul>
                 <li><strong>Cost function:</strong> Minimizes tracking error and control effort</li>
-                <li><strong>Constraints:</strong> Collision avoidance using safety margins</li>
-                <li><strong>Solver:</strong> Sequential Quadratic Programming (SQP)</li>
+                <li><strong>Constraints:</strong> Collision avoidance using safety margins with slack variables</li>
+                <li><strong>Solver:</strong> Sequential Quadratic Programming (SQP) via CasADi</li>
+                <li><strong>Horizon:</strong> Configurable prediction horizon for real-time performance</li>
             </ul>
         </section>
 
@@ -52,9 +138,55 @@
             <h2>Results</h2>
             <p>
                 Successfully demonstrated obstacle avoidance in static and dynamic environments with 
-                replanning frequency of 10 Hz.
+                replanning frequency of 10 Hz. Tested in both PyBullet simulation and ROS/Gazebo 
+                environments on Husky robot platform.
             </p>
         </section>
+
+        <section>
+            <h2>Setup</h2>
+            <p>Recommended: Create a separate conda environment</p>
+            <pre style="background: var(--card-bg); padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border);"><code>conda create -n FOR_Project python=3.8
+conda activate FOR_Project
+git clone https://github.com/prakrutk/MPC-for-UGV.git
+cd MPC-for-UGV
+pip install --upgrade pip
+pip install -e .
+pip install -r requirements.txt</code></pre>
+            <p>Run MPC: <code>python3 dynamics/MPC.py</code></p>
+            <p>Run Waypoint Generation: <code>python3 Waypoint_generation/Waypoint_new.py</code></p>
+        </section>
     </div>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        
+        const icons = { 'dark': '&#9728;', 'light': '&#9790;' };
+        const labels = { 'dark': 'Switch to Light Theme', 'light': 'Switch to Dark Theme' };
+        
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = current === 'dark' ? 'light' : 'dark';
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+        });
+    </script>
 </body>
 </html>

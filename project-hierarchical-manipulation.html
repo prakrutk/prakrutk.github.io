@@ -4,13 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hierarchical Manipulation Planning | Prakrut Kotecha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="project-styles.css">
+    <style>
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            color: white;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
         </div>
     </nav>
 
@@ -27,7 +63,7 @@
             </div>
         </div>
 
-        <img src="images/manipulation.jpg" alt="Hierarchical Manipulation" class="hero-image" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Hierarchical+Planning'">
+        <img src="images/manipulation.jpg" alt="Hierarchical Manipulation" class="hero-image" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Hierarchical+Planning'">
 
         <section>
             <h2>Abstract</h2>
@@ -53,7 +89,52 @@
                 The hierarchical approach reduces planning time by 60% compared to end-to-end methods while 
                 achieving 95% success rate in benchmark manipulation tasks.
             </p>
+            <div class="video-grid">
+                <video autoplay loop muted playsinline class="demo-video" loading="lazy">
+                    <source src="Videos/ball_medium.mov" type="video/quicktime">
+                </video>
+                <video autoplay loop muted playsinline class="demo-video" loading="lazy">
+                    <source src="Videos/Cup_success.mov" type="video/quicktime">
+                </video>
+                <video autoplay loop muted playsinline class="demo-video" loading="lazy">
+                    <source src="Videos/Small_clip_success.mov" type="video/quicktime">
+                </video>
+                <video autoplay loop muted playsinline class="demo-video" loading="lazy">
+                    <source src="Videos/Stapler_success.mov" type="video/quicktime">
+                </video>
+            </div>
         </section>
     </div>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        
+        const icons = { 'dark': '&#9728;', 'light': '&#9790;' };
+        const labels = { 'dark': 'Switch to Light Theme', 'light': 'Switch to Dark Theme' };
+        
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = current === 'dark' ? 'light' : 'dark';
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+        });
+    </script>
 </body>
 </html>

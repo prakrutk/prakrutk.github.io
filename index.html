@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prakrut Kotecha | IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     
     <style>
         /* --- 1. CSS VARIABLES (THEME ENGINE) --- */
@@ -1287,18 +1290,22 @@
             <h2>Publications & Patents</h2>
 
             <div class="pub-item">
-                <video autoplay loop muted playsinline class="pub-thumb">
+                <video autoplay loop muted playsinline class="pub-thumb" loading="lazy">
                     <source src="Videos/stride.mp4" type="video/mp4">
                 </video>
                 <div class="pub-details">
                     <div class="pub-title">STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
                     <div class="pub-venue">2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (Under Review)</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2603.08478">Paper</a>
+                        <a href="project-stride.html">Website</a>
+                    </div>
                 </div>
             </div>
 
             <div class="pub-item">
-                <video autoplay loop muted playsinline class="pub-thumb">
+                <video autoplay loop muted playsinline class="pub-thumb" loading="lazy">
                     <source src="Videos/Lagrangian.mp4" type="video/mp4">
                 </video>
                 <div class="pub-details">
@@ -1309,7 +1316,7 @@
             </div>
 
             <div class="pub-item">
-                <video autoplay loop muted playsinline class="pub-thumb">
+                <video autoplay loop muted playsinline class="pub-thumb" loading="lazy">
                     <source src="Videos/gait-adaptation.mp4" type="video/mp4">
                 </video>
                 <div class="pub-details">
@@ -1337,7 +1344,7 @@
             </div>
 
             <div class="pub-item">
-                <img src="Videos/non-prehensile.gif" class="pub-thumb">
+                <img src="Videos/non-prehensile.gif" class="pub-thumb" loading="lazy">
                 <div class="pub-details">
                     <div class="pub-title">A Hierarchical Manipulation Planning Framework Combining Striking, Pushing, and Pick & Place Motion Primitives</div>
                     <div class="pub-authors"><strong>Prakrut Kotecha</strong>, et al.</div>
@@ -1350,7 +1357,7 @@
             </div>
 
             <div class="pub-item">
-                <video autoplay loop muted playsinline class="pub-thumb">
+                <video autoplay loop muted playsinline class="pub-thumb" loading="lazy">
                     <source src="Videos/pixguide-short.mp4" type="video/mp4">
                 </video>
                 <div class="pub-details">
@@ -1376,7 +1383,7 @@
                 </a>
 
                 <a href="project-quadruped-gait.html" class="project-card">
-                    <video autoplay loop muted playsinline class="project-thumb">
+                    <video autoplay loop muted playsinline class="project-thumb" loading="lazy">
                         <source src="Videos/gait-adaptation.mp4" type="video/mp4">
                     </video>
                     <div class="pub-details">
@@ -1386,7 +1393,7 @@
                 </a>
 
                 <a href="project-lagrangian-nn.html" class="project-card">
-                    <video autoplay loop muted playsinline class="project-thumb">
+                    <video autoplay loop muted playsinline class="project-thumb" loading="lazy">
                         <source src="Videos/Lagrangian.mp4" type="video/mp4">
                     </video>
                     <div class="pub-details">
@@ -1401,6 +1408,9 @@
                     </div>
                 </a>
             </div>
+            <p style="text-align: center; color: var(--accent); margin-top: 1rem; font-weight: 500;">
+                Individual project pages are being updated with more details soon.
+            </p>
         </section>
 
         <section id="experience">
@@ -1727,10 +1737,16 @@
             mouseY = e.clientY;
         });
 
-        // Initialize
+        // Initialize - defer particle animation to not block page load
         resizeCanvas();
         initParticles();
-        animateParticles();
+        
+        // Use requestIdleCallback or setTimeout to defer animation
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => animateParticles());
+        } else {
+            setTimeout(() => animateParticles(), 100);
+        }
 
         window.addEventListener('resize', () => {
             resizeCanvas();
