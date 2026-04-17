@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video 2 Robot | Prakrut Kotecha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --card-glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f8f9fa;
+            --text-secondary: #b8bcc8;
+            --accent: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 15, 0.9);
+            --icon-color: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-glass: rgba(0, 0, 0, 0.03);
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --accent: #0066ff;
+            --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
+            --accent-secondary: #ff6b9d;
+            --border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 249, 250, 0.9);
+            --icon-color: #212529;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+        html { scroll-behavior: smooth; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            margin-left: 12px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .nav-links a:hover { 
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before { opacity: 0.1; }
+        .nav-links .active { 
+            color: var(--text-main);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .theme-toggle {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 8px;
+            color: var(--icon-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover { 
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--glow);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .work-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-glass);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .work-info strong {
+            color: var(--accent);
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .abstract {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .key-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .key-point {
+            flex: 1;
+            min-width: 200px;
+            background: var(--card-glass);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .key-point h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .key-point p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .video-item {
+            background: var(--card-glass);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .video-item video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-item .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .video-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .method-diagram {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .method-diagram img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--card-glass);
+            border-radius: 12px;
+        }
+
+        .pipeline-step {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pipeline-arrow {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: var(--glow);
+        }
+
+        .reference-section {
+            margin-top: 30px;
+        }
+
+        .reference-section h3 {
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .reference-item {
+            background: var(--card-glass);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .reference-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .reference-item a:hover {
+            text-decoration: underline;
+        }
+
+        .reference-item p {
+            margin: 5px 0 0 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header { padding: 40px 20px; }
+            section { padding: 25px; }
+            .video-grid { grid-template-columns: 1fr; }
+            .nav-container { 
+                flex-direction: column; 
+                gap: 15px; 
+                padding: 15px;
+            }
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            .theme-toggle { margin-left: 0; margin-top: 10px; }
+            .container { padding: 0 20px; }
+            .pipeline { flex-direction: column; }
+            .pipeline-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-title">Prakrut Kotecha</a>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="projects.html">All Projects</a>
+                <a href="cv.html">CV</a>
+                
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">&#9728;</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Video 2 Robot</h1>
+            <p class="subtitle">Motion Imitation from Videos for Humanoid Robots</p>
+            <div class="work-info">
+                <span>&#128188;</span> Work done at <strong>Infosys</strong>
+            </div>
+        </header>
+
+        <section>
+            <h2>Abstract</h2>
+            <p class="abstract">
+                This project implements an end-to-end pipeline for converting video sequences of human motions into executable robot trajectories for humanoid robots. Inspired by <strong>SLoMo</strong> and <strong>VideoMimic</strong>, the system extracts human pose from videos using 3D pose estimation, retargets the motion to robot joints using motion imitation techniques, and deploys policies on real hardware using <strong>RoboJuDo</strong>. The motion imitation training is performed in <strong>mjlab</strong> (Isaac Lab API with MuJoCo-Warp), enabling efficient GPU-accelerated policy learning.
+            </p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <h3>End-to-End Pipeline</h3>
+                    <p>Video → 3D Pose → Motion Retargeting → Policy Training → Hardware Deployment</p>
+                </div>
+                <div class="key-point">
+                    <h3>Multi-Motion Support</h3>
+                    <p>Demonstrated on Bharatnatyam dance, pick & place, and painting tasks</p>
+                </div>
+                <div class="key-point">
+                    <h3>Real-World Deployment</h3>
+                    <p>Deployed on Unitree G1 humanoid using RoboJuDo framework</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Demonstration Videos</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Below are demonstrations of the motion imitation system on various tasks. The top row shows reference videos from which motions are extracted, and the bottom row shows the resulting robot motions in simulation.
+            </p>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <video autoplay loop muted playsinline>
+                        <source src="Videos/Bharatnatyam_Mujoco.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Bharatnatyam Dance - Reference Motion</div>
+                </div>
+                <div class="video-item">
+                    <video autoplay loop muted playsinline>
+                        <source src="Videos/Bharatnatyam_mjlab.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Bharatnatyam Dance - Robot Execution (mjlab)</div>
+                </div>
+                <div class="video-item">
+                    <video autoplay loop muted playsinline>
+                        <source src="Videos/Pick_and_place_mjlab.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Pick & Place Motion</div>
+                </div>
+                <div class="video-item">
+                    <video autoplay loop muted playsinline>
+                        <source src="Videos/Painting_mjlab.mp4" type="video/mp4">
+                    </video>
+                    <div class="caption">Painting Motion</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Method</h2>
+            <p>
+                The pipeline consists of three main stages:
+            </p>
+            
+            <div class="pipeline">
+                <div class="pipeline-step">1. Video Input</div>
+                <span class="pipeline-arrow">&#8594;</span>
+                <div class="pipeline-step">2. Pose Estimation</div>
+                <span class="pipeline-arrow">&#8594;</span>
+                <div class="pipeline-step">3. Motion Retargeting</div>
+                <span class="pipeline-arrow">&#8594;</span>
+                <div class="pipeline-step">4. Policy Training (mjlab)</div>
+                <span class="pipeline-arrow">&#8594;</span>
+                <div class="pipeline-step">5. Deployment (RoboJuDo)</div>
+            </div>
+
+            <div class="key-points">
+                <div class="key-point">
+                    <h3>Pose Extraction</h3>
+                    <p>Extract 3D human pose from monocular videos using state-of-the-art pose estimation models (similar to PromptHMR, VideoMimic approaches)</p>
+                </div>
+                <div class="key-point">
+                    <h3>mjlab Training</h3>
+                    <p>Use mjlab's motion imitation framework to train tracking policies. Reference motions are preprocessed and converted to NPZ format for GPU-accelerated training</p>
+                </div>
+                <div class="key-point">
+                    <h3>RoboJuDo Deployment</h3>
+                    <p>Export trained policies to ONNX and deploy using RoboJuDo's motion tracking controller for real robot execution</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>References</h2>
+            <div class="reference-section">
+                <div class="reference-item">
+                    <a href="https://github.com/AIM-Intelligence/video2robot">video2robot</a>
+                    <p>End-to-end pipeline converting generative videos (Veo, Sora) to humanoid robot motions. Provides video to robot motion conversion with pose extraction and retargeting.</p>
+                </div>
+                <div class="reference-item">
+                    <a href="https://github.com/hongsukchoi/VideoMimic">VideoMimic</a>
+                    <p>CoRL 2025 Best Student Paper. Visual Imitation Enables Contextual Humanoid Control. Real-to-sim pipeline for motion capture and humanoid policy training.</p>
+                </div>
+                <div class="reference-item">
+                    <a href="https://github.com/johnzhang3/SLoMo">SLoMo</a>
+                    <p>A General System for Legged Robot Motion Imitation from Casual Videos. Converts in-the-wild videos to robot motion primitives.</p>
+                </div>
+                <div class="reference-item">
+                    <a href="https://github.com/mujocolab/mjlab">mjlab</a>
+                    <p>Isaac Lab API powered by MuJoCo-Warp for RL and robotics research. Provides GPU-accelerated motion imitation training pipeline.</p>
+                </div>
+                <div class="reference-item">
+                    <a href="https://github.com/HansZ8/RoboJuDo">RoboJuDo</a>
+                    <p>Plug-and-play deployment framework for humanoid robots. Supports multiple policies and enables real hardware execution.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Project developed during tenure at Infosys.</p>
+        <p style="margin-top: 10px;">Contact: prakrut.kotecha@iisc.ac.in</p>
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        const themes = ['dark', 'light'];
+        const icons = { 'dark': '&#9728;', 'light': '&#9790;' };
+        const labels = { 'dark': 'Switch to Light Theme', 'light': 'Switch to Dark Theme' };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        toggleButton.innerHTML = icons[currentTheme];
+        toggleButton.title = labels[currentTheme];
+
+        toggleButton.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'dark';
+            const currentIndex = themes.indexOf(current);
+            const nextIndex = (currentIndex + 1) % themes.length;
+            const nextTheme = themes[nextIndex];
+            
+            if (nextTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            toggleButton.innerHTML = icons[nextTheme];
+            toggleButton.title = labels[nextTheme];
+            updateParticleColors();
+        });
+
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouseX = 0, mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function getParticleColor() {
+            const theme = htmlElement.getAttribute('data-theme');
+            return theme === 'light' ? 'rgba(0, 102, 255, ' : 'rgba(0, 212, 255, ';
+        }
+
+        function updateParticleColors() {
+            particles.forEach(p => { p.baseColor = getParticleColor(); });
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.baseColor = getParticleColor();
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= dx * force * 0.02;
+                    this.y -= dy * force * 0.02;
+                }
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `${this.baseColor}${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = window.innerWidth < 768 ? 50 : 100;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        const opacity = 0.1 * (1 - distance / 120);
+                        const theme = htmlElement.getAttribute('data-theme');
+                        ctx.strokeStyle = theme === 'light' ? `rgba(0, 102, 255, ${opacity})` : `rgba(0, 212, 255, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => { particle.update(); particle.draw(); });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+    </script>
+</body>
+</html>
