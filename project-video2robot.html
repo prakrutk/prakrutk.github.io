@@ -272,6 +272,13 @@
             margin-top: 25px;
         }
 
+        .video-grid-sub {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
         .video-item {
             background: var(--card-glass);
             border-radius: 12px;
@@ -468,15 +475,23 @@
             <div class="video-grid">
                 <div class="video-item">
                     <video autoplay loop muted playsinline>
-                        <source src="Videos/Bharatnatyam_Mujoco.mp4" type="video/mp4">
+                        <source src="Videos/Bharatnatyam-hardware.mp4" type="video/mp4">
                     </video>
-                    <div class="caption">Bharatnatyam Dance - Reference Motion</div>
+                    <div class="caption">Bharatnatyam Dance - Hardware Motion</div>
                 </div>
-                <div class="video-item">
-                    <video autoplay loop muted playsinline>
-                        <source src="Videos/Bharatnatyam_mjlab.mp4" type="video/mp4">
-                    </video>
-                    <div class="caption">Bharatnatyam Dance - Robot Execution (mjlab)</div>
+                <div class="video-grid-sub">
+                    <div class="video-item">
+                        <video autoplay loop muted playsinline>
+                            <source src="Videos/Bharatnatyam_mjlab.mp4" type="video/mp4">
+                        </video>
+                        <div class="caption">Bharatnatyam Dance - Robot Execution (mjlab)</div>
+                    </div>
+                    <div class="video-item">
+                        <video autoplay loop muted playsinline>
+                            <source src="Videos/Bharatnatyam_Mujoco.mp4" type="video/mp4">
+                        </video>
+                        <div class="caption">Bharatnatyam Dance - Robot Execution (Mujoco)</div>
+                    </div>
                 </div>
                 <div class="video-item">
                     <video autoplay loop muted playsinline>
