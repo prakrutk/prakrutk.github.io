@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STRIDE: Physics-Guided Generative Dynamics | Prakrut Kotecha</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="STRIDE — structured Lagrangian and stochastic residual dynamics for quadruped locomotion via flow matching.">
+    <link rel="canonical" href="https://prakrutk.github.io/project-stride.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="STRIDE: Physics-Guided Generative Dynamics | Prakrut Kotecha">
+    <meta property="og:description" content="STRIDE — structured Lagrangian and stochastic residual dynamics for quadruped locomotion via flow matching.">
+    <meta property="og:url" content="https://prakrutk.github.io/project-stride.html">
+    <meta property="og:image" content="https://prakrutk.github.io/images/concept.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STRIDE: Physics-Guided Generative Dynamics | Prakrut Kotecha">
+    <meta name="twitter:description" content="STRIDE — structured Lagrangian and stochastic residual dynamics for quadruped locomotion via flow matching.">
+    <meta name="twitter:image" content="https://prakrutk.github.io/images/concept.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -511,7 +523,7 @@
             </div>
             
             <div class="method-diagram">
-                <img src="Images/concept.png" alt="STRIDE Conceptual Overview">
+                <img src="images/concept.png" alt="STRIDE Conceptual Overview">
                 <p style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9rem;">Figure 1: STRIDE combines a structured Lagrangian prior with a stochastic residual to capture interaction uncertainty while preserving physical consistency.</p>
             </div>
 
@@ -543,7 +555,7 @@
 
             <h3 style="margin: 30px 0 20px; color: var(--text-main);">Long-Horizon Prediction Stability</h3>
             <div class="result-item">
-                <img src="Images/rollout_error.png" alt="Long-horizon rollout error comparison">
+                <img src="images/rollout_error.png" alt="Long-horizon rollout error comparison">
                 <div class="caption">
                     <h4>30-Step Rollout Error</h4>
                     <p> We evaluate multi-step rollout accuracy over H=30 steps. The black-box MLP (ONN) shows rapid exponential error growth. DeLaN (Lagrangian network) improves stability with approximately linear error growth due to physical structure. STRIDE further reduces drift by capturing stochastic contact-induced variability, achieving <strong>83% error reduction on Go1</strong> and <strong>53% on G1</strong> compared to ONN. Cumulative RMSE over 30-step horizon. STRIDE (red) maintains lowest error compared to ONN (black-box MLP) and DeLaN (structured baseline) on both robots.</p>
@@ -555,14 +567,14 @@
                 Accurate contact force modeling is critical for legged locomotion. STRIDE captures sharp discontinuities at impact and swing-stance transitions, achieving <strong>~30% force error improvement</strong> over DeLaN. Below: predicted vs ground-truth vertical ground reaction forces.
             </p>
             <div class="result-item">
-                <img src="Images/contact_force.png" alt="Contact force prediction on Unitree Go1">
+                <img src="images/contact_force.png" alt="Contact force prediction on Unitree Go1">
                 <div class="caption">
                     <h4>Unitree Go1 Quadruped</h4>
                     <p>Contact forces across multiple gaits (trot, pronk, bound, pace). STRIDE accurately captures timing and magnitude of stance-swing transitions.</p>
                 </div>
             </div>
             <div class="result-item">
-                <img src="Images/contact_force_g1.png" alt="Contact force prediction on Unitree G1">
+                <img src="images/contact_force_g1.png" alt="Contact force prediction on Unitree G1">
                 <div class="caption">
                     <h4>Unitree G1 Humanoid</h4>
                     <p>Walking gait contact forces. STRIDE preserves sharp impact discontinuities that deterministic baselines smooth over.</p>
@@ -574,7 +586,7 @@
                 We analyze a 1-DoF pendulum near the unstable upright equilibrium—a sensitive region where deterministic predictors exhibit averaging bias. STRIDE preserves correct topology while baselines show distortions.
             </p>
             <div class="result-item" style="flex-direction: column; align-items: center;">
-                <img src="Images/learned_phase_portraits.png" alt="Phase portrait comparison" style="width: 100%; max-width: 700px;">
+                <img src="images/learned_phase_portraits.png" alt="Phase portrait comparison" style="width: 100%; max-width: 700px;">
                 <div class="caption" style="max-width: 700px; text-align: center;">
                     <h4>Pendulum Phase Space</h4>
                     <p>Near the unstable equilibrium (top), STRIDE captures the saddle structure correctly. DeLaN shows deviations while ONN produces noisy flows. STRIDE also preserves elliptical orbits around stable equilibrium (bottom).</p>
@@ -586,7 +598,7 @@
                 We deploy STRIDE within a Dreamer-MPC pipeline on Unitree Go1. The system runs in <strong>3ms inference</strong> at <strong>50Hz control</strong>. We demonstrate zero-shot adaptation to 4 unseen terrains without retraining.
             </p>
             <div class="result-item" style="flex-direction: column; align-items: center;">
-                <img src="Images/Hardware_u.png" alt="Hardware experiments" style="width: 100%; max-width: 800px;">
+                <img src="images/Hardware_u.png" alt="Hardware experiments" style="width: 100%; max-width: 800px;">
                 <div class="caption" style="max-width: 800px; text-align: center;">
                     <h4>Real-World Deployment</h4>
                     <p>Demonstrates velocity tracking (0-2 m/s), elevation adaptation (up to 20°), and zero-shot terrain adaptation: high/low friction, 20° slopes, muddy and grassy surfaces.</p>

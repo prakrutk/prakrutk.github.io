@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://prakrutk.github.io/</loc><priority>1.0</priority></url>
+    <url><loc>https://prakrutk.github.io/projects.html</loc><priority>0.9</priority></url>
+    <url><loc>https://prakrutk.github.io/cv.html</loc><priority>0.8</priority></url>
+    <url><loc>https://prakrutk.github.io/gallery.html</loc><priority>0.5</priority></url>
+    <url><loc>https://prakrutk.github.io/project-biped-optimization.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-bipedal-rl-mpc.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-collision-cbf.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-hierarchical-manipulation.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-kimera-perception.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-lagrangian-nn.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-mpc-ugv.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-non-prehensile.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-pixguide.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-qhumus.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-quadruped-control.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-quadruped-gait.html</loc><priority>0.6</priority></url>
+    <url><loc>https://prakrutk.github.io/project-stride.html</loc><priority>0.7</priority></url>
+    <url><loc>https://prakrutk.github.io/project-video2robot.html</loc><priority>0.7</priority></url>
+</urlset>
