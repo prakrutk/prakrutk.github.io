@@ -20,13 +20,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/main.css">
+
+    <!-- Structured data: tells Google this is the authoritative page for the person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Prakrut Kotecha",
+      "url": "https://prakrutk.github.io/",
+      "image": "https://prakrutk.github.io/images/profile.jpg",
+      "jobTitle": "Ph.D. Student, Cyber-Physical Systems",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Science (IISc), Bangalore" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Visvesvaraya National Institute of Technology (VNIT), Nagpur" },
+      "knowsAbout": ["Robotics", "Legged Locomotion", "Model Predictive Control", "Reinforcement Learning", "Optimal Control", "Learning-based Dynamics"],
+      "sameAs": [
+        "https://scholar.google.com/citations?user=LPDasNEAAAAJ&hl=en",
+        "https://github.com/prakrutpk",
+        "https://linkedin.com/in/prakrutkotecha"
+      ]
+    }
+    </script>
 </head>
 <body data-page="about">
 
     <nav id="site-nav"></nav>
 
     <main class="container">
-        <section class="hero" id="hero"></section>
+        <!-- Static content below is crawlable in the raw HTML; render.js enhances it on load. -->
+        <section class="hero" id="hero">
+            <div class="hero-bio">
+                <span class="hero-role">Ph.D. Student @ IISc Bangalore</span>
+                <h1>Prakrut Kotecha</h1>
+                <p>Ph.D. researcher in Cyber-Physical Systems at the Indian Institute of Science (IISc), Bangalore, working on learning-based dynamics models and optimal control for legged robots at Stoch Lab under Prof. Shishir NY. Interests span quadrupedal locomotion, model predictive control, and reinforcement learning for robotics.</p>
+                <p><a href="mailto:prakrutpk@iisc.ac.in">Email</a> &middot; <a href="https://scholar.google.com/citations?user=LPDasNEAAAAJ&hl=en">Google Scholar</a> &middot; <a href="https://github.com/prakrutpk">GitHub</a> &middot; <a href="https://linkedin.com/in/prakrutkotecha">LinkedIn</a></p>
+            </div>
+            <div class="hero-photo-wrap"><img class="hero-photo" src="images/profile.jpg" alt="Prakrut Kotecha"></div>
+        </section>
         <section class="section" id="news"></section>
         <section class="section" id="publications"></section>
         <section class="section" id="projects-home"></section>
