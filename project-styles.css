@@ -1,33 +1,33 @@
 /* --- PROJECT PAGE SHARED STYLES --- */
 :root {
-    --bg-color: #0a0a0f;
-    --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-    --card-bg: rgba(30, 30, 45, 0.8);
-    --card-glass: rgba(255, 255, 255, 0.05);
-    --text-main: #f8f9fa;
-    --text-secondary: #b8bcc8;
-    --accent: #00d4ff;
-    --accent-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
-    --accent-secondary: #ff6b9d;
-    --border: rgba(255, 255, 255, 0.1);
-    --nav-bg: rgba(10, 10, 15, 0.9);
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+    --bg-color: #0a0b10;
+    --bg-gradient: radial-gradient(60% 50% at 15% 0%, rgba(109,139,255,0.16), transparent 60%), radial-gradient(50% 40% at 90% 5%, rgba(34,211,238,0.12), transparent 60%), #0a0b10;
+    --card-bg: rgba(22, 24, 32, 0.72);
+    --card-glass: rgba(255, 255, 255, 0.045);
+    --text-main: #f4f6fb;
+    --text-secondary: #9aa2b4;
+    --accent: #7d9bff;
+    --accent-gradient: linear-gradient(120deg, #6d8bff 0%, #22d3ee 100%);
+    --accent-secondary: #ff7eb6;
+    --border: rgba(255, 255, 255, 0.09);
+    --nav-bg: rgba(10, 11, 16, 0.72);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    --glow: 0 0 30px rgba(109, 139, 255, 0.35);
 }
 
 [data-theme="light"] {
-    --bg-color: #f8f9fa;
-    --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --card-glass: rgba(0, 0, 0, 0.03);
-    --text-main: #212529;
-    --text-secondary: #6c757d;
-    --accent: #0066ff;
-    --accent-gradient: linear-gradient(135deg, #0066ff, #00d4ff);
-    --border: rgba(0, 0, 0, 0.1);
-    --nav-bg: rgba(248, 249, 250, 0.9);
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --glow: 0 0 20px rgba(0, 102, 255, 0.2);
+    --bg-color: #f7f8fc;
+    --bg-gradient: radial-gradient(60% 50% at 15% 0%, rgba(59,91,219,0.10), transparent 60%), radial-gradient(50% 40% at 90% 5%, rgba(11,181,214,0.10), transparent 60%), #f7f8fc;
+    --card-bg: rgba(255, 255, 255, 0.86);
+    --card-glass: rgba(20, 30, 60, 0.035);
+    --text-main: #141722;
+    --text-secondary: #5b6273;
+    --accent: #3b5bdb;
+    --accent-gradient: linear-gradient(120deg, #3b5bdb 0%, #0bb5d6 100%);
+    --border: rgba(10, 15, 40, 0.10);
+    --nav-bg: rgba(247, 248, 252, 0.78);
+    --shadow: 0 10px 40px rgba(20, 30, 70, 0.10);
+    --glow: 0 0 24px rgba(59, 91, 219, 0.18);
 }
 
 * {
