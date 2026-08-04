@@ -46,14 +46,14 @@ const CONTENT = {
 
   /* ---------- PUBLICATIONS & PATENTS ---------- */
   publications: [
-    {
-      title: "STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching",
-      authors: "<strong>Prakrut Kotecha</strong>, et al.",
-      venue: "2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
-      status: "Under Review",
-      media: { type: "video", src: "Videos/stride.mp4" },
-      links: { Paper: "https://arxiv.org/abs/2603.08478", Website: "project-stride.html" }
-    },
+    // {
+    //   title: "STRIDE: Structured Lagrangian and Stochastic Residual Dynamics via Flow Matching",
+    //   authors: "<strong>Prakrut Kotecha</strong>, et al.",
+    //   venue: "2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+    //   status: "Under Review",
+    //   media: { type: "video", src: "Videos/stride.mp4" },
+    //   links: { Paper: "https://arxiv.org/abs/2603.08478", Website: "project-stride.html" }
+    // },
     {
       title: "Neural Predictive Control using Lagrangian Neural Networks for Quadruped Locomotion",
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
@@ -66,6 +66,7 @@ const CONTENT = {
       title: "Real-Time Gait Adaptation for Quadrupeds using Model Predictive Control and Reinforcement Learning",
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
       venue: "2025 Eleventh Indian Control Conference (ICC-11)",
+      status: "Published",
       media: { type: "video", src: "Videos/gait-adaptation.mp4" },
       links: { Paper: "https://arxiv.org/abs/2510.20706", Website: "https://sites.google.com/iisc.ac.in/autogait/home?authuser=0" }
     },
@@ -74,6 +75,7 @@ const CONTENT = {
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
       venue: "7th International Conference of The Robotics Society, Advances In Robotics 2025",
       award: "⭐ 🏆 Best Poster Award 🏆 ⭐",
+      status: "Published",
       media: { type: "image", src: "images/Main_fig copy.png" },
       links: { Paper: "https://www.arxiv.org/abs/2506.16079" }
     },
@@ -81,6 +83,7 @@ const CONTENT = {
       title: "A Hierarchical Manipulation Planning Framework Combining Striking, Pushing, and Pick & Place Motion Primitives",
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
       venue: "IEEE Conference on Automation Science and Engineering (CASE) 2024",
+      status: "Published",
       media: { type: "image", src: "Videos/non-prehensile.gif" },
       links: { Paper: "https://ieeexplore.ieee.org/document/10711645", Video: "https://youtu.be/ePORvzIond8" }
     },
