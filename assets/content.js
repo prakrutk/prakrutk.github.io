@@ -197,6 +197,7 @@ const CONTENT = {
 
   /* ---------- TALKS & PRESENTATIONS ---------- */
   talks: [
+    { title: "Oral Presentation", venue: "2026 IEEE 22nd Conference on Automation Science and Engineering (CASE)", img: "images/CASE2026talk.jpeg" },
     { title: "RL Tutorial", venue: "Walmart Centre for Tech Excellence RL Workshop, 2025 & 2026", img: "images/RL_workshop_new.jpg" },
     { title: "Late Breaking Result", venue: "IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025", img: "images/humanoid.jpg" },
     { title: "Oral Presentation", venue: "Neuromorphic Engineering Workshop, 2025", img: "images/neuromorphic.jpg" },
