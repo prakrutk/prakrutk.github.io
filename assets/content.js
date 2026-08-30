@@ -59,6 +59,7 @@ const CONTENT = {
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
       venue: "2026 IEEE 22nd Conference on Automation Science and Engineering (CASE)",
       status: "Accepted",
+      award: "🏅 IEEE RAS Travel Grant, 2026 ✈️",
       media: { type: "video", src: "Videos/Lagrangian.mp4" },
       links: { Paper: "https://arxiv.org/abs/2603.14333", Website: "https://www.stochlab.com/PEPC/" }
     },
@@ -84,6 +85,7 @@ const CONTENT = {
       authors: "<strong>Prakrut Kotecha</strong>, et al.",
       venue: "IEEE Conference on Automation Science and Engineering (CASE) 2024",
       status: "Published",
+      award: "🏅 IEEE RAS Travel Grant, 2024 ✈️",
       media: { type: "image", src: "Videos/non-prehensile.gif" },
       links: { Paper: "https://ieeexplore.ieee.org/document/10711645", Video: "https://youtu.be/ePORvzIond8" }
     },
@@ -95,6 +97,16 @@ const CONTENT = {
       media: { type: "video", src: "Videos/pixguide-short.mp4" },
       links: { Video: "https://youtu.be/ePORvzIond8" }
     }
+  ],
+
+  /* ---------- AWARDS & CONTRIBUTIONS ---------- */
+  recognition: [
+    { type: "Award", icon: "🏆", title: "Best Poster Award", detail: "Advances in Robotics 2025" },
+    { type: "Award", icon: "🏅", title: "IEEE RAS Travel Grant", detail: "CASE 2024" },
+    { type: "Award", icon: "🏅", title: "IEEE RAS Travel Grant", detail: "CASE 2026" },
+    { type: "Contribution", icon: "🎓", title: "Teaching Assistant", detail: "Foundation of Robotics, IISc" },
+    { type: "Contribution", icon: "🤝", title: "Volunteer", detail: "Cyber-Physical Systems Symposium (CyPhySS) 2024" },
+    { type: "Contribution", icon: "🛠️", title: "IEEE Student Chapter Workshops", detail: "Image processing, microcontrollers, and CAD for 100+ students" }
   ],
 
   /* ---------- WORKSHOP / LATE-BREAKING (no thumbnail) ---------- */

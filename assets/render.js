@@ -142,6 +142,26 @@
     box.innerHTML = html;
   }
 
+  /* ---------- AWARDS & CONTRIBUTIONS ---------- */
+  function recognition() {
+    const box = el("recognition");
+    if (!box) return;
+    if (!C.recognition || !C.recognition.length) { box.remove(); return; }
+    box.innerHTML = `
+      <h2 class="section-title">Awards &amp; Contributions</h2>
+      <div class="recognition-grid">
+        ${C.recognition.map((r) => `
+          <article class="recognition-card ${r.type.toLowerCase()}">
+            <span class="recognition-icon" aria-hidden="true">${r.icon}</span>
+            <div>
+              <span class="recognition-type">${r.type}</span>
+              <div class="recognition-title">${r.title}</div>
+              <div class="recognition-detail">${r.detail}</div>
+            </div>
+          </article>`).join("")}
+      </div>`;
+  }
+
   /* ---------- PROJECT CARD ---------- */
   const projectCard = (pr) => `
     <a href="${pr.page}" class="project-card">
@@ -233,7 +253,7 @@
   /* ---------- BOOT ---------- */
   function boot() {
     chrome();
-    hero(); news(); publications(); projectsHome(); experience(); talks(); // homepage sections
+    hero(); news(); publications(); recognition(); projectsHome(); experience(); talks(); // homepage sections
     projectsFull(); // projects page
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
