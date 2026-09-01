@@ -33,8 +33,8 @@ const CONTENT = {
     ],
     socials: [
       { type: "email",    url: "mailto:prakrutpk@iisc.ac.in" },
-      { type: "github",   url: "https://github.com/prakrutpk" },
-      { type: "linkedin", url: "https://linkedin.com/in/prakrutkotecha" },
+      { type: "github",   url: "https://github.com/prakrutk" },
+      { type: "linkedin", url: "https://www.linkedin.com/in/prakrut-kotecha-044093189/" },
       { type: "scholar",  url: "https://scholar.google.com/citations?user=LPDasNEAAAAJ&hl=en" }
     ]
   },
