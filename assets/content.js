@@ -194,7 +194,7 @@ const CONTENT = {
   /* ---------- EXPERIENCE ---------- */
   experience: [
     { title: "Research Intern", org: "Advanced Humanoid Research Lab, Infosys Limited",
-      date: "Feb 2026 – Present", logo: "images/Infosys_logo.png",
+      date: "Feb 2026 – Sep 2026", logo: "images/Infosys_logo.png",
       desc: "Humanoid robotics research and development." },
     { title: "Research Intern", org: "Robotics Research Centre (RRC), IIIT Hyderabad",
       date: "Jan 2022 – Mar 2023", logo: "images/rrc_logo.jpeg",
@@ -209,13 +209,14 @@ const CONTENT = {
 
   /* ---------- TALKS & PRESENTATIONS ---------- */
   talks: [
+    { title: "Poster Presentation", venue: "Google Day @ IISc 2026", img: "images/Google_day_IISc.jpeg" },
     { title: "Oral Presentation", venue: "2026 IEEE 22nd Conference on Automation Science and Engineering (CASE)", img: "images/CASE2026talk.jpeg" },
     { title: "RL Tutorial", venue: "Walmart Centre for Tech Excellence RL Workshop, 2025 & 2026", img: "images/RL_workshop_new.jpg" },
     { title: "Late Breaking Result", venue: "IEEE-RAS 24th Intl. Conference on Humanoid Robots, 2025", img: "images/humanoid.jpg" },
     { title: "Oral Presentation", venue: "Neuromorphic Engineering Workshop, 2025", img: "images/neuromorphic.jpg" },
     { title: "Oral Presentation", venue: "IEEE Conference on Automation Science and Engineering (CASE), 2024", img: "images/case.jpg" },
     { title: "Oral Presentation", venue: "Cyber-Physical Systems Symposium (CyPhySS), 2024", img: "images/cyphyss.png" },
-    { title: "Poster Presentation", venue: "IEEE-RAS ICRA 2026 Workshop on Contact-Rich Control and Representation", img: "images/STRIDE_ICRA_poster.png" }
+    { title: "Poster Presentation", venue: "IEEE-RAS ICRA 2026 Workshop on Contact-Rich Control and Representation", img: "images/STRIDE_ICRA_poster.png" },
   ]
 };
 
