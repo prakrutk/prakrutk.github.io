@@ -96,6 +96,12 @@ const CONTENT = {
       status: "Published Patent",
       media: { type: "video", src: "Videos/pixguide-short.mp4" },
       links: { Video: "https://youtu.be/ePORvzIond8" }
+    },
+    {
+      title: "System and Method for Safety-Aware Control of Robot using Predicted Trajectory Evaluation.",
+      authors: "<strong>Prakrut Kotecha</strong>, et al.",
+      venue: "CBR Ref. Number: 20641116486 (2026)",
+      status: "Submitted Patent"
     }
   ],
 
